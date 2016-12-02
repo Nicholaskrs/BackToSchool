@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "15186524957",
+    "firebase_url": "https://tpamobile-2f1fb.firebaseio.com",
+    "project_id": "tpamobile-2f1fb",
+    "storage_bucket": "tpamobile-2f1fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15186524957:android:50214a9ea8bcfa31",
+        "android_client_info": {
+          "package_name": "com.example.nicholas.backtoschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15186524957-jn25cgjtj5rmu111a789024mspenmqg0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPloAhwRfT4HeAsafbItG4wcT_vKrsq0Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

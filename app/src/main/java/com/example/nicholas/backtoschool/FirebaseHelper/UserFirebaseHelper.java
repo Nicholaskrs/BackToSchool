@@ -26,6 +26,15 @@ public class UserFirebaseHelper {
         }
         return false;
     }
+    public boolean uservalid(String username){
+        users=retrieve();
+        for(int i=0;i<users.size();i++){
+            if(users.get(i).getUsername().equals(username)){
+                return false;
+            }
+        }
+        return true;
+    }
     public UserFirebaseHelper(DatabaseReference db){
         this.db=db;
     }

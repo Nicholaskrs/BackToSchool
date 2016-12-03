@@ -1,6 +1,7 @@
 package com.example.nicholas.backtoschool;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Config;
@@ -58,13 +59,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             }
         }
         else if(view.getId()==gen.getId()){
-            User u=new User();
-            u.setAge(5);
-            u.setEducationalLevel("Senior High School");
-            u.setName("asdasd");
-            u.setPassword("qwerty");
-            u.setUsername("nk");
-            ufh.savedata(u);
+            Intent intent = new Intent(Login.this,Register.class);
+            startActivity(intent);
+            finish();
 
         }
     }

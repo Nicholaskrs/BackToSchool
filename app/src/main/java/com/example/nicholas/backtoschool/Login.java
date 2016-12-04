@@ -13,6 +13,16 @@ import android.widget.Toast;
 import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.User;
 import com.example.nicholas.backtoschool.Utilities.Encrypt;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,15 +37,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     UserFirebaseHelper ufh;
     ArrayList<User> usr;
     Encrypt en;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
+
+        //AppEventsLogger.activateApp(this);
+
         usr=new ArrayList<>();
         txtusername=(EditText)findViewById(R.id.txtloginUsername);
         txtpassword=(EditText)findViewById(R.id.txtloginPassword);
         btnLogin=(Button)findViewById(R.id.btnLogin);
-        gen=(Button)findViewById(R.id.generate);
+        gen=(Button)findViewById(R.id.login_register);
         btnLogin.setOnClickListener(this);
         gen.setOnClickListener(this);
         db = FirebaseDatabase.getInstance().getReference();
@@ -68,7 +85,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         else if(view.getId()==gen.getId()){
             Intent intent = new Intent(Login.this,Register.class);
             startActivity(intent);
-            finish();
+
 
         }
     }

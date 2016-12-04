@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.nicholas.backtoschool.CustomAdapter.UserAdapter;
 import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.User;
+import com.example.nicholas.backtoschool.Utilities.Encrypt;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,14 +31,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     Button btnRegister;
     UserFirebaseHelper ufh;
     DatabaseReference db;
-
+    ArrayList<User> usr;
+    Encrypt en;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_register);
         grade=(Spinner)findViewById(R.id.cmbLevel);
-
+        usr=new ArrayList<>();
         btnRegister=(Button)findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);
         db = FirebaseDatabase.getInstance().getReference();
@@ -58,8 +59,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         txtage=(EditText)findViewById(R.id.txtAge);
         txtschool=(EditText)findViewById(R.id.txtschool);
         radioGroup=(RadioGroup)findViewById(R.id.rbggender);
-
-
+        usr=ufh.retrieve();
+        en=new Encrypt();
 
     }
 
@@ -81,8 +82,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             Toast.makeText(Register.this, "Gender must be selected", Toast.LENGTH_SHORT).show();
         }else if(grade.getSelectedItem()==null){
             Toast.makeText(Register.this, "Education Level must be selected", Toast.LENGTH_SHORT).show();
-        }else if(ufh.uservalid(txtusername.getText().toString().trim())){
+        }else if(!uservalid(txtusername.getText().toString().trim())){
             Toast.makeText(Register.this, "Username is already taken please take another username", Toast.LENGTH_SHORT).show();
+
         }
         else {
 
@@ -92,7 +94,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             u.setAge(Integer.parseInt(txtage.getText().toString().trim()));
             u.setEducationalLevel(grade.getSelectedItem().toString().trim());
             u.setName(txtname.getText().toString().trim());
-            u.setPassword(txtpassword.getText().toString().trim());
+            u.setPassword(en.MD5(txtpassword.getText().toString().trim()));
             u.setUsername(txtusername.getText().toString().trim());
             u.setGender(radioButton.getText().toString().trim());
             ufh.savedata(u);
@@ -101,5 +103,15 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             startActivity(intent);
             finish();
         }
+
+    }
+    private boolean uservalid(String username){
+
+        for(int i=0;i<usr.size();i++){
+            if(usr.get(i).getUsername().equals(username))
+                return false;
+        }
+
+        return true;
     }
 }

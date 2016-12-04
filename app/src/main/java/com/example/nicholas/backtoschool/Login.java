@@ -12,8 +12,11 @@ import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.User;
+import com.example.nicholas.backtoschool.Utilities.Encrypt;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
@@ -22,12 +25,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     Button btnLogin,gen;
     DatabaseReference db;
     UserFirebaseHelper ufh;
-
+    ArrayList<User> usr;
+    Encrypt en;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        usr=new ArrayList<>();
         txtusername=(EditText)findViewById(R.id.txtloginUsername);
         txtpassword=(EditText)findViewById(R.id.txtloginPassword);
         btnLogin=(Button)findViewById(R.id.btnLogin);
@@ -36,6 +40,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         gen.setOnClickListener(this);
         db = FirebaseDatabase.getInstance().getReference();
         ufh=new UserFirebaseHelper(db);
+        usr=ufh.retrieve();
+        en=new Encrypt();
+
     }
 
     @Override
@@ -50,7 +57,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             Toast.makeText(Login.this, "Username or password must be filled", Toast.LENGTH_SHORT).show();
             else {
 
-                if(ufh.checkuser(email,password))
+                if(checkuser(email, password))
                     Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(Login.this, "Username or Password Wrong", Toast.LENGTH_SHORT).show();
@@ -64,5 +71,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             finish();
 
         }
+    }
+    private boolean checkuser(String username,String password)
+    {
+
+        for(int i=0;i<usr.size();i++)
+        {
+            if(usr.get(i).getUsername().equals(username) && usr.get(i).getPassword().equals(en.MD5(password))){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nicholas.backtoschool">
-    <uses-permission
-        android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login" />
-        <activity android:name=".Register"></activity>
+        <activity android:name=".Register" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
@@ -25,11 +27,14 @@
         <activity
             android:name="com.facebook.FacebookActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
-        <provider              android:authorities="com.facebook.app.FacebookContentProvider"                 android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider"
+            android:exported="true" />
+
+        <activity android:name=".Testing_profil"></activity>
     </application>
-
 
 </manifest>

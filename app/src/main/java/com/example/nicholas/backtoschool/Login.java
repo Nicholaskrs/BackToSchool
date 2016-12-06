@@ -23,6 +23,10 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -37,7 +41,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     UserFirebaseHelper ufh;
     ArrayList<User> usr;
     Encrypt en;
-
+    FirebaseAuth mfauth;
 
 
     @Override
@@ -59,6 +63,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         ufh=new UserFirebaseHelper(db);
         usr=ufh.retrieve();
         en=new Encrypt();
+        mfauth=FirebaseAuth.getInstance();
 
     }
 
@@ -74,10 +79,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             Toast.makeText(Login.this, "Username or password must be filled", Toast.LENGTH_SHORT).show();
             else {
 
-                if(checkuser(email, password))
-                    Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(Login.this, "Username or Password Wrong", Toast.LENGTH_SHORT).show();
+
+                mfauth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(Task<AuthResult> task) {
+                        if (!task.isSuccessful()) {
+
+                            Toast.makeText(Login.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Login.this, CalendarActivity.class);
+                            startActivity(intent);
+
+                        }
+
+                    }
+                });
 
 
             }
@@ -89,15 +107,5 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         }
     }
-    private boolean checkuser(String username,String password)
-    {
 
-        for(int i=0;i<usr.size();i++)
-        {
-            if(usr.get(i).getUsername().equals(username) && usr.get(i).getPassword().equals(en.MD5(password))){
-                return true;
-            }
-        }
-        return false;
-    }
 }

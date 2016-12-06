@@ -3,6 +3,7 @@ package com.example.nicholas.backtoschool;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +17,10 @@ import com.example.nicholas.backtoschool.CustomAdapter.UserAdapter;
 import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.User;
 import com.example.nicholas.backtoschool.Utilities.Encrypt;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,6 +38,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     DatabaseReference db;
     ArrayList<User> usr;
     Encrypt en;
+    FirebaseAuth mfauth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,17 +67,22 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         radioGroup=(RadioGroup)findViewById(R.id.rbggender);
         usr=ufh.retrieve();
         en=new Encrypt();
+        mfauth=FirebaseAuth.getInstance();
 
     }
 
     @Override
     public void onClick(View view) {
+        String email=txtusername.getText().toString();
         if(txtname.getText().toString().trim().equals("")){
             Toast.makeText(Register.this, "Name must be filled", Toast.LENGTH_SHORT).show();
         }else if(txtusername.getText().toString().trim().equals("")){
-            Toast.makeText(Register.this, "Username must be filled", Toast.LENGTH_SHORT).show();
-        }else if(txtpassword.getText().toString().trim().equals("")){
-            Toast.makeText(Register.this, "Password must be filled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Register.this, "Email must be filled", Toast.LENGTH_SHORT).show();
+        }else if(!email.contains("@")|| !email.contains(".")|| email.indexOf("@")!=email.lastIndexOf("@") || email.lastIndexOf("@")>email.lastIndexOf(".")||
+                email.indexOf(".")==0|| email.indexOf("@")==email.length()-1 || email.indexOf(".")==email.length()-1||email.indexOf("@")==0){
+            Toast.makeText(Register.this, "Email Format not match", Toast.LENGTH_SHORT).show();
+        }else if(txtpassword.getText().toString().length()<=6){
+            Toast.makeText(Register.this, "Password must more than 6 character", Toast.LENGTH_SHORT).show();
         }else if(!txtpassword.getText().toString().equals(txtcpassword.getText().toString())){
             Toast.makeText(Register.this, "Password and Confirm Password not match", Toast.LENGTH_SHORT).show();
         }else if(txtschool.getText().toString().trim().equals("")){
@@ -88,20 +99,38 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         }
         else {
 
-            int selectedId = radioGroup.getCheckedRadioButtonId();
-            radioButton = (RadioButton) findViewById(selectedId);
-            User u = new User();
-            u.setAge(Integer.parseInt(txtage.getText().toString().trim()));
-            u.setEducationalLevel(grade.getSelectedItem().toString().trim());
-            u.setName(txtname.getText().toString().trim());
-            u.setPassword(en.MD5(txtpassword.getText().toString().trim()));
-            u.setUsername(txtusername.getText().toString().trim());
-            u.setGender(radioButton.getText().toString().trim());
-            ufh.savedata(u);
-            Toast.makeText(Register.this, "Success Register!!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Register.this,Login.class);
-            startActivity(intent);
-            finish();
+
+            if(mfauth.getCurrentUser()!=null)
+                mfauth.signOut();
+            mfauth.createUserWithEmailAndPassword(txtusername.getText().toString(), txtpassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(Task<AuthResult> task) {
+                    mfauth.signInWithEmailAndPassword(txtusername.getText().toString(),txtpassword.getText().toString());
+                    int selectedId = radioGroup.getCheckedRadioButtonId();
+                    if(mfauth.getCurrentUser()!=null) {
+                        radioButton = (RadioButton) findViewById(selectedId);
+                        String id=mfauth.getCurrentUser().getUid();
+                        User u = new User();
+                        u.setAge(Integer.parseInt(txtage.getText().toString().trim()));
+                        u.setEducationalLevel(grade.getSelectedItem().toString().trim());
+                        u.setName(txtname.getText().toString().trim());
+
+                        u.setUsername(txtusername.getText().toString().trim());
+                        u.setGender(radioButton.getText().toString().trim());
+                        ufh.savedata(u,id);
+
+                        Intent intent = new Intent(Register.this, Testing_profil.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(Register.this, "Register Failed!!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+
+
         }
 
     }

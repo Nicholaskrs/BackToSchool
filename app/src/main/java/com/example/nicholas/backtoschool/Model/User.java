@@ -5,7 +5,7 @@ package com.example.nicholas.backtoschool.Model;
  */
 public class User {
 
-    private String name,username,password,school,educationalLevel,gender;
+    private String name,username,school,educationalLevel,gender;
     private int age;
 
     public String getGender() {
@@ -52,14 +52,8 @@ public class User {
         this.school = school;
     }
 
-    public String getPassword() {
 
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getUsername() {
 
@@ -74,6 +68,7 @@ public class User {
     {
 
     }
+
 
 
 }

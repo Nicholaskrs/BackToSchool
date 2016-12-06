@@ -63,6 +63,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         ufh=new UserFirebaseHelper(db);
         usr=ufh.retrieve();
         en=new Encrypt();
+        mfauth=FirebaseAuth.getInstance();
 
     }
 
@@ -82,10 +83,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 mfauth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(Task<AuthResult> task) {
-                        if (mfauth.getCurrentUser() != null) {
-                            Intent in=new Intent(Login.this,Testing_profil.class);
+                        if (!task.isSuccessful()) {
+
+                            Toast.makeText(Login.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(Login.this, "Wrong Username or Password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Login.this, CalendarActivity.class);
+                            startActivity(intent);
+
                         }
 
                     }

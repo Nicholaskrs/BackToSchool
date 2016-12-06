@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             else {
 
 
-                mfauth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                /*mfauth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
@@ -95,8 +95,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         }
 
                     }
-                });
-
+                });*/
+                mfauth.signInAnonymously();
+                Intent intent = new Intent(Login.this, CalendarActivity.class);
+                startActivity(intent);
 
             }
         }

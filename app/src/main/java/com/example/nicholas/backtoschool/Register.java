@@ -122,7 +122,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         boolean check=ufh.savedata(u, id);
                         Toast.makeText(Register.this, "Save data"+check, Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(Register.this, Testing_profil.class);
+                        Intent intent = new Intent(Register.this, CalendarActivity.class);
                         startActivity(intent);
                         finish();
                     }

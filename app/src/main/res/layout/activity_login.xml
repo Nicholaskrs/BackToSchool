@@ -5,45 +5,87 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    >
+    android:background="@drawable/bg5"
+    android:weightSum="1">
     <TextView
         android:id="@+id/emaillbl"
         android:layout_width="wrap_content"
-        android:text="Username"
-        android:layout_height="wrap_content" />
+        android:text="Email"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        android:textIsSelectable="false"
+        android:typeface="normal"
+        android:id="@+id/emaillbl" />
     <EditText
         android:id="@+id/txtloginUsername"
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#ffffff" />
     <TextView
         android:id="@+id/passlbl"
         android:layout_width="wrap_content"
-        android:text="password"
-        android:layout_height="wrap_content" />
+        android:text="Password"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textIsSelectable="false"
+        android:typeface="normal"
+        android:id="@+id/passlbl" />
     <EditText
         android:id="@+id/txtloginPassword"
         android:layout_width="match_parent"
         android:inputType="textPassword"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#ffffff" />
     <Button
         android:id="@+id/btnLogin"
         android:text="Login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:background="#da3e36"
+        android:height="50dp"/>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Register"
-        android:id="@+id/login_register" />
+        android:id="@+id/login_register"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textStyle="bold"
+        android:height="50dp"
+        android:background="#e9a022" />
+
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:layout_margin="4dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"/>
+        android:layout_width="327dp"
+        android:layout_height="50dp"
+        android:paddingRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:enabled="false"
+        android:paddingLeft="10dp"
+        android:layout_weight="0.12"
+        android:height="50dp"/>
 </LinearLayout>

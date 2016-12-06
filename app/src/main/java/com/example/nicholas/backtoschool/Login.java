@@ -56,13 +56,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         //AppEventsLogger.activateApp(this);
 
-        usr=new ArrayList<>();
-        txtusername=(EditText)findViewById(R.id.txtloginUsername);
-        txtpassword=(EditText)findViewById(R.id.txtloginPassword);
-        btnLogin=(Button)findViewById(R.id.btnLogin);
-        gen=(Button)findViewById(R.id.login_register);
-        lblEmail=(TextView)findViewById(R.id.emaillbl);
-        lblPass= (TextView) findViewById(R.id.passlbl);
+        usr = new ArrayList<>();
+        txtusername = (EditText)findViewById(R.id.txtloginUsername);
+        txtpassword = (EditText)findViewById(R.id.txtloginPassword);
+        btnLogin = (Button)findViewById(R.id.btnLogin);
+        gen = (Button)findViewById(R.id.login_register);
+        lblEmail = (TextView)findViewById(R.id.emaillbl);
+        lblPass = (TextView) findViewById(R.id.passlbl);
 
         btnLogin.setOnClickListener(this);
         gen.setOnClickListener(this);
@@ -83,10 +83,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             email = email.trim();
             password = password.trim();
             if(email.isEmpty()|| password.isEmpty())
-            Toast.makeText(Login.this, "Username or password must be filled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "Username or password must be filled", Toast.LENGTH_SHORT).show();
             else {
-
-
                 mfauth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(Task<AuthResult> task) {

@@ -102,7 +102,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 
 
 
-            /*if(mfauth.getCurrentUser()!=null)
+            if(mfauth.getCurrentUser()!=null)
                 mfauth.signOut();
             mfauth.createUserWithEmailAndPassword(txtusername.getText().toString(), txtpassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -131,7 +131,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                     }
                 }
             });
-*/
+
 
 
         }

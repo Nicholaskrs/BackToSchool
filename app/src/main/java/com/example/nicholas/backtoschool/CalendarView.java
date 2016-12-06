@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -65,6 +66,22 @@ public class CalendarView extends LinearLayout
         btnNext = (ImageView)findViewById(R.id.calendar_next_button);
         txtDate = (TextView)findViewById(R.id.calendar_date_display);
         grid = (GridView)findViewById(R.id.calendar_grid);
+        grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> view, View cell, int position, long id)
+            {
+                // handle long-press
+                if (eventHandler == null)
+                    return false;
+
+                Date date = (Date)view.getItemAtPosition(position);
+                eventHandler.onDayLongPress(date);
+
+                return true;
+            }
+        });
     }
     public void updateCalendar()
     {

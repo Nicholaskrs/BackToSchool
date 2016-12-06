@@ -5,7 +5,7 @@ package com.example.nicholas.backtoschool.Model;
  */
 public class User {
 
-    private String name,username,school,educationalLevel,gender;
+    private String name,username,school,educationalLevel,gender,studentNumber;
     private int age;
 
     public String getGender() {
@@ -70,5 +70,11 @@ public class User {
     }
 
 
+    public String getStudentNumber() {
+        return studentNumber;
+    }
 
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
+    }
 }

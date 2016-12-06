@@ -76,7 +76,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             email = email.trim();
             password = password.trim();
             if(email.isEmpty()|| password.isEmpty())
-            Toast.makeText(Login.this, "Username or password must be filled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login.this, "Email or password must be filled", Toast.LENGTH_SHORT).show();
+            else if(!email.contains("@")|| !email.contains(".")|| email.indexOf("@")!=email.lastIndexOf("@") || email.lastIndexOf("@")>email.lastIndexOf(".")||
+                    email.indexOf(".")==0|| email.indexOf("@")==email.length()-1 || email.indexOf(".")==email.length()-1||email.indexOf("@")==0){
+                Toast.makeText(Login.this, "Email Format not match", Toast.LENGTH_SHORT).show();
+            }
             else {
 
 
@@ -96,8 +100,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
                     }
                 });*/
-                mfauth.signInAnonymously();
-                Intent intent = new Intent(Login.this, CalendarActivity.class);
+                mfauth.signInWithEmailAndPassword("nicholas@yahoo.com", "qwerty12345");
+                Intent intent = new Intent(Login.this, Testing_profil.class);
                 startActivity(intent);
 
             }

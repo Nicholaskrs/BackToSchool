@@ -30,7 +30,7 @@ import java.util.List;
 public class Register extends AppCompatActivity implements View.OnClickListener{
 
     Spinner grade;
-    EditText txtusername,txtpassword,txtcpassword,txtname,txtage,txtschool;
+    EditText txtusername,txtpassword,txtcpassword,txtname,txtage,txtschool,txtStudentID;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     Button btnRegister;
@@ -63,6 +63,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         txtcpassword=(EditText)findViewById(R.id.txtcPassword);
         txtname=(EditText)findViewById(R.id.txtName);
         txtage=(EditText)findViewById(R.id.txtAge);
+        txtStudentID=(EditText)findViewById(R.id.txtStudentID);
         txtschool=(EditText)findViewById(R.id.txtschool);
         radioGroup=(RadioGroup)findViewById(R.id.rbggender);
         usr=ufh.retrieve();
@@ -100,7 +101,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         else {
 
 
-            if(mfauth.getCurrentUser()!=null)
+
+            /*if(mfauth.getCurrentUser()!=null)
                 mfauth.signOut();
             mfauth.createUserWithEmailAndPassword(txtusername.getText().toString(), txtpassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -117,7 +119,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 
                         u.setUsername(txtusername.getText().toString().trim());
                         u.setGender(radioButton.getText().toString().trim());
-                        ufh.savedata(u,id);
+                        boolean check=ufh.savedata(u, id);
+                        Toast.makeText(Register.this, "Save data"+check, Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(Register.this, Testing_profil.class);
                         startActivity(intent);
@@ -128,7 +131,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                     }
                 }
             });
-
+*/
 
 
         }

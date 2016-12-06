@@ -95,6 +95,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Login.this, CalendarActivity.class);
                             startActivity(intent);
+                            finish();
 
                         }
 

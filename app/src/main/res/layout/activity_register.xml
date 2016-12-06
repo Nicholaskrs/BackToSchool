@@ -7,87 +7,133 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/bg5">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name" />
+            android:text="Name"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
 
         <EditText
             android:id="@+id/txtName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username" />
+            android:text="Email"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
 
         <EditText
             android:id="@+id/txtUsername"
             android:layout_width="match_parent"
             android:inputType="textEmailAddress"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password" />
+            android:text="Password"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
 
         <EditText
             android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirm Password" />
+            android:text="Confirm Password"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
 
         <EditText
             android:id="@+id/txtcPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="School/University Name" />
+            android:text="School/University Name"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
 
         <EditText
             android:id="@+id/txtschool"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Age" />
+            android:text="Age"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
 
         <EditText
             android:id="@+id/txtAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#ffffff" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gender"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"></GridLayout>
-
-
-
-
 
         <RadioGroup
             android:id="@+id/rbggender"
@@ -101,30 +147,54 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Male" />
+                android:text="Male"
+                android:layout_marginLeft="20dp"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
 
             <RadioButton
                 android:id="@+id/rbFemale"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Female" />
+                android:text="Female"
+                android:layout_marginRight="20dp"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
         </RadioGroup>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Educational Level" />
+            android:text="Educational Level"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp" />
         <Spinner
             android:id="@+id/cmbLevel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown" />
+            android:layout_height="71dp"
+            android:spinnerMode="dropdown"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:minHeight="50dp"
+            android:layout_marginBottom="10dp"
+            style="@android:style/Widget.Spinner" />
 
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register" />
+            android:text="Register"
+            android:height="50dp"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#f00e0e"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </ScrollView>

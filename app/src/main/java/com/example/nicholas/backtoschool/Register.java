@@ -119,7 +119,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         u.setGender(radioButton.getText().toString().trim());
                         ufh.savedata(u,id);
 
-                        Intent intent = new Intent(Register.this, Testing_profil.class);
+                        Intent intent = new Intent(Register.this, CalendarActivity.class);
                         startActivity(intent);
                         finish();
                     }

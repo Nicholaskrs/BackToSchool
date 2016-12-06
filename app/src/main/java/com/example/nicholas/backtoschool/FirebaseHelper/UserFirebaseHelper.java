@@ -22,12 +22,12 @@ public class UserFirebaseHelper {
         this.db=db;
     }
 
-    public boolean savedata(User Users) {
+    public boolean savedata(User Users,String uid) {
         if (Users == null)
             saved= false;
         else {
             try {
-                db.child("Users").push().setValue(Users);
+                db.child("Users").child(uid).setValue(Users);
                 saved = true;
             } catch (Exception e) {
                 saved= false;

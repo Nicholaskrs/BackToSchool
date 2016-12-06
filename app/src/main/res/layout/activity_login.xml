@@ -19,7 +19,7 @@
         android:layout_marginTop="50dp"
         android:textIsSelectable="false"
         android:typeface="normal"
-        android:id="@+id/emaillbl" />
+         />
     <EditText
         android:id="@+id/txtloginUsername"
         android:inputType="textEmailAddress"
@@ -39,7 +39,7 @@
         android:layout_marginRight="20dp"
         android:textIsSelectable="false"
         android:typeface="normal"
-        android:id="@+id/passlbl" />
+         />
     <EditText
         android:id="@+id/txtloginPassword"
         android:layout_width="match_parent"

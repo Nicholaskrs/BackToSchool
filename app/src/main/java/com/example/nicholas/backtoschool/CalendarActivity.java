@@ -33,7 +33,6 @@ public class CalendarActivity extends AppCompatActivity {
                 Toast.makeText(CalendarActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
             }
         });
-        //testtest
     }
 
 }

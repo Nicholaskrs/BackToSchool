@@ -8,6 +8,7 @@
     android:background="@drawable/bg5"
     android:weightSum="1">
     <TextView
+        android:id="@+id/emaillbl"
         android:layout_width="wrap_content"
         android:text="Email"
         android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
         android:layout_marginTop="50dp"
         android:textIsSelectable="false"
         android:typeface="normal"
-        android:id="@+id/emaillbl" />
+         />
     <EditText
         android:id="@+id/txtloginUsername"
         android:inputType="textEmailAddress"
@@ -28,6 +29,7 @@
         android:layout_marginRight="20dp"
         android:textColor="#ffffff" />
     <TextView
+        android:id="@+id/passlbl"
         android:layout_width="wrap_content"
         android:text="Password"
         android:layout_height="wrap_content"
@@ -37,7 +39,7 @@
         android:layout_marginRight="20dp"
         android:textIsSelectable="false"
         android:typeface="normal"
-        android:id="@+id/passlbl" />
+         />
     <EditText
         android:id="@+id/txtloginPassword"
         android:layout_width="match_parent"

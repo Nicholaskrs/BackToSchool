@@ -2,14 +2,12 @@ package com.example.nicholas.backtoschool;
 
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Config;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
@@ -32,7 +30,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 
@@ -40,7 +37,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
     EditText txtusername,txtpassword;
     Button btnLogin,gen;
-    TextView lblEmail, lblPass;
     DatabaseReference db;
     UserFirebaseHelper ufh;
     ArrayList<User> usr;
@@ -61,9 +57,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         txtpassword=(EditText)findViewById(R.id.txtloginPassword);
         btnLogin=(Button)findViewById(R.id.btnLogin);
         gen=(Button)findViewById(R.id.login_register);
-        lblEmail=(TextView)findViewById(R.id.emaillbl);
-        lblPass= (TextView) findViewById(R.id.passlbl);
-
         btnLogin.setOnClickListener(this);
         gen.setOnClickListener(this);
         db = FirebaseDatabase.getInstance().getReference();

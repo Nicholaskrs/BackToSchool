@@ -89,7 +89,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Login.this, CalendarActivity.class);
+                            Intent intent = new Intent(Login.this, MenuActivity.class);
                             startActivity(intent);
 
                         }

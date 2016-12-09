@@ -21,7 +21,7 @@ public class ProfileActivity extends AppCompatActivity {
     DatabaseReference db;
     FirebaseAuth fba;
     TextView nametxt, emailtxt, agetxt, gendertxt, edutxt, univtxt;
-    Button changeBtn, saveBtn;
+    Button changeBtn, saveBtn, passBtn;
     String email = "", userId = "";
     String oldName = "", oldEmail = "", oldGender = "", oldEdu = "", oldUniv = "";
     int oldAge = 0;
@@ -42,6 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
         univtxt = (TextView) findViewById(R.id.univtxt);
         changeBtn = (Button) findViewById(R.id.changebtn);
         saveBtn = (Button) findViewById(R.id.savebtn);
+        passBtn = (Button) findViewById(R.id.changepass);
 
         nametxt.setEnabled(false);
         emailtxt.setEnabled(false);
@@ -50,6 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
         gendertxt.setEnabled(false);
         edutxt.setEnabled(false);
         saveBtn.setEnabled(false);
+        passBtn.setEnabled(false);
 
         changeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,7 @@ public class ProfileActivity extends AppCompatActivity {
                     gendertxt.setEnabled(true);
                     edutxt.setEnabled(true);
                     saveBtn.setEnabled(true);
+                    passBtn.setEnabled(true);
                     changeBtn.setText("Cancel");
                 }
                 else if(changeBtn.getText().equals("Cancel")) {
@@ -73,6 +76,7 @@ public class ProfileActivity extends AppCompatActivity {
                     gendertxt.setEnabled(false);
                     edutxt.setEnabled(false);
                     saveBtn.setEnabled(false);
+                    passBtn.setEnabled(false);
                     changeBtn.setText("Change Profile");
 
                     nametxt.setText(oldName);
@@ -111,16 +115,14 @@ public class ProfileActivity extends AppCompatActivity {
                 }
                 else{
 
-                    android.app.FragmentManager fm = getFragmentManager();
-                    ProfFragmentDialog pfd = new ProfFragmentDialog();
-                    pfd.show(fm, "Change Password");
-
                     //update
                     db.child(userId).child("name").setValue(nametxt.getText().toString());
                     db.child(userId).child("username").setValue(emailtxt.getText().toString());
                     db.child(userId).child("age").setValue(Integer.parseInt(agetxt.getText().toString()));
                     db.child(userId).child("gender").setValue(gendertxt.getText().toString());
                     db.child(userId).child("educationalLevel").setValue(edutxt.getText().toString());
+
+                    Toast.makeText(getApplicationContext(), "Change profile succeed!", Toast.LENGTH_SHORT).show();
 
                     nametxt.setEnabled(false);
                     emailtxt.setEnabled(false);
@@ -135,6 +137,14 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        passBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.FragmentManager fm = getFragmentManager();
+                ProfFragmentDialog pfd = new ProfFragmentDialog();
+                pfd.show(fm, "Change Password");
+            }
+        });
 
         email = fba.getCurrentUser().getEmail();
 

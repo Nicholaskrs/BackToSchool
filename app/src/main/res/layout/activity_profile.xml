@@ -164,6 +164,18 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/changepass"
+            android:text="Change Password"
+            android:textColor="#fff"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/com_facebook_button_send_background"
+            android:layout_below="@id/changebtn" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/savebtn"
             android:text="Save"
             android:textColor="#fff"
@@ -172,7 +184,7 @@
             android:layout_marginRight="50dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/com_facebook_button_send_background"
-            android:layout_below="@id/changebtn" />
+            android:layout_below="@id/changepass" />
 
     </RelativeLayout>
 </ScrollView>

@@ -68,7 +68,7 @@ public class ProfFragmentDialog extends DialogFragment{
 
                    fba.getCurrentUser().updatePassword(newPass.getText().toString());
 
-                   Toast.makeText(view.getContext(), "Change profile succeed!", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(view.getContext(), "Change passsword succeed!", Toast.LENGTH_SHORT).show();
 
                    dismiss();
                }

@@ -1,6 +1,7 @@
 package com.example.nicholas.backtoschool;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -159,6 +160,8 @@ public class MenuActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+        Intent i=new Intent(MenuActivity.this,ProfileActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

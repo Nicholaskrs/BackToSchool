@@ -158,13 +158,16 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        Intent i=new Intent(MenuActivity.this,ProfileActivity.class);
+        if (id == R.id.nav_profile) {
+            Intent i=new Intent(MenuActivity.this, ProfileActivity.class);
             startActivity(i);
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
+        }
+        else if (id == R.id.nav_addClass) {
+            android.app.FragmentManager fm = getFragmentManager();
+            AddClassFragmentDialog afd = new AddClassFragmentDialog();
+            afd.show(fm, "Add Class");
+        }
+        else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 

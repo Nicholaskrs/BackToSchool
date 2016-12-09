@@ -2,7 +2,9 @@ package com.example.nicholas.backtoschool;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Config;
@@ -93,9 +95,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             Toast.makeText(Login.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
+
                             Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Login.this, CalendarActivity.class);
+
+                            Intent intent = new Intent(Login.this, ProfileActivity.class);
                             startActivity(intent);
+                            finish();
 
                         }
 

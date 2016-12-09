@@ -20,6 +20,7 @@
         <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity android:name=".CalendarActivity" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
@@ -35,7 +36,12 @@
             android:exported="true" />
 
         <activity android:name=".Testing_profil" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu"
+
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>

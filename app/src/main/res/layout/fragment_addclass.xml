@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/classCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Class Code"
+        android:textSize="20dp" />
+
+    <EditText
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/classCodetxt"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        style="?attr/buttonStyle"
+        android:background="@android:color/holo_blue_light" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        style="?attr/buttonStyle"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_light" />
+
+</LinearLayout>

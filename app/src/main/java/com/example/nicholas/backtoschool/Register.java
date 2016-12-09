@@ -101,7 +101,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         else {
 
 
-
+//TODO hapus student id gak kepake
             if(mfauth.getCurrentUser()!=null)
                 mfauth.signOut();
             mfauth.createUserWithEmailAndPassword(txtusername.getText().toString(), txtpassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -116,7 +116,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         u.setAge(Integer.parseInt(txtage.getText().toString().trim()));
                         u.setEducationalLevel(grade.getSelectedItem().toString().trim());
                         u.setName(txtname.getText().toString().trim());
-
+                        u.setSchool(txtschool.getText().toString().trim());
                         u.setUsername(txtusername.getText().toString().trim());
                         u.setGender(radioButton.getText().toString().trim());
                         boolean check=ufh.savedata(u, id);

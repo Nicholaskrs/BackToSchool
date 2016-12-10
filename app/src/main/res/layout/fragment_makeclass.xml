@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="Class Room ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/ClassRoomID" />
+
+    <TextView
+        android:text="Class Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/ClassName" />
+
+    <Button
+        android:id="@+id/make_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?attr/buttonStyle"
+        android:background="@android:color/holo_blue_light"
+        android:text="Make Class" />
+
+    <Button
+        android:id="@+id/make_class_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        style="?attr/buttonStyle"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_light" />
+
+</LinearLayout>

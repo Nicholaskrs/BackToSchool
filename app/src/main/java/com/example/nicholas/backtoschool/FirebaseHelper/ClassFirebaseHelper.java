@@ -1,6 +1,8 @@
 package com.example.nicholas.backtoschool.FirebaseHelper;
 
 import com.example.nicholas.backtoschool.Model.ClassRoom;
+import com.example.nicholas.backtoschool.Model.Forum;
+import com.example.nicholas.backtoschool.Model.Reply;
 import com.example.nicholas.backtoschool.Model.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -28,14 +30,14 @@ public class ClassFirebaseHelper {
     public boolean savedata(ClassRoom classRoom,String uid) {
         if (classRoom == null)
             return false;
-        else {
+
             try {
-                db.child("Class").push().setValue(classRoom);
+                db.child("Class").child(classRoom.getClassRoomID()).setValue(classRoom);
                 return true;
             } catch (Exception e) {
                 return false;
             }
-        }
+
     }
     public String adduser(String classRoomID,String userid,User user){
         if(classRooms.isEmpty())
@@ -43,8 +45,10 @@ public class ClassFirebaseHelper {
         boolean find=false;
         int classindex=0;
         for(int i=0;i<classRooms.size();i++){
-            if(classRooms.get(i).getClassRoomID().equals(classRoomID))
-                find=true;
+            if(classRooms.get(i).getClassRoomID().equals(classRoomID)) {
+                find = true;
+                classindex=i;
+            }
         }
         if(find)
         {
@@ -52,11 +56,86 @@ public class ClassFirebaseHelper {
             Vector<String> u=tempclass.getUserID();
             if(u.contains(userid))
                 return "You already in the class";
-            u.add(userid);
-            user.addclassroom(tempclass);
-            return "Class successfuly added";
+            tempclass.addUser(user);
+            tempclass.adduserid(userid);
+            db.child("Class").child(classRoomID).setValue(tempclass);
+            return "User successfully added";
         }
         return "ClassID not found";
+    }
+    public String addnewforum(Forum forum,String ClassID)
+    {
+        if(forum==null)
+            return "Forum Value is null";
+        if(classRooms.isEmpty())
+            retrieve();
+        boolean find=false;
+        int classindex=0;
+        for(int i=0;i<classRooms.size();i++){
+            if(classRooms.get(i).getClassRoomID().equals(ClassID)) {
+                find = true;
+                classindex=i;
+            }
+        }
+        if(find)
+        {
+            ClassRoom tempclass=classRooms.get(classindex);
+            try {
+                tempclass.addforum(forum);
+                db.child("Class").child(ClassID).setValue(tempclass);
+                return "Forum added Successfully";
+            } catch (Exception e) {
+                return "Firebase Error";
+            }
+
+        }
+        return "Class not found";
+
+    }
+
+    public String replyforum(String forumid, String ClassID, Reply reply)
+    {
+        if(reply==null)
+            return "Forum Value is null";
+        if(classRooms.isEmpty())
+            retrieve();
+        boolean find=false;
+        int classindex=0;
+        for(int i=0;i<classRooms.size();i++){
+            if(classRooms.get(i).getClassRoomID().equals(ClassID)) {
+                find = true;
+                classindex=i;
+                break;
+            }
+        }
+        if(find)
+        {
+            ClassRoom tempclass=classRooms.get(classindex);
+            Vector<Forum>tempforums=tempclass.getForums();
+            int forumindex=-1;
+            for(int i=0;i<tempforums.size();i++){
+                if(tempforums.get(i).getForumID().equals(forumid)) {
+                    forumindex = i;
+                    break;
+                }
+            }
+
+            if(forumindex==-1)
+                return "Error Forum not found";
+            Forum tempforum=tempforums.get(forumindex);
+            tempforum.addReplies(reply);
+            tempforums.set(forumindex,tempforum);
+            try {
+                tempclass.setForums(tempforums);
+                db.child("Class").child(ClassID).setValue(tempclass);
+                return "Replies added successfully";
+            } catch (Exception e) {
+                return "Firebase Error";
+            }
+
+        }
+        return "Class not found";
+
     }
 
 

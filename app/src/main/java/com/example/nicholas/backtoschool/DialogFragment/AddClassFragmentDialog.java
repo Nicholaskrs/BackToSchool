@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 
 public class AddClassFragmentDialog extends DialogFragment {
 
+    EditText classId;
     Button save, cancel;
     ClassFirebaseHelper cfh;
     FirebaseDatabase fd;
@@ -40,6 +42,7 @@ public class AddClassFragmentDialog extends DialogFragment {
         View classView = inflater.inflate(R.layout.fragment_addclass, container, false);
         getDialog().setTitle("Add Class");
 
+        classId = (EditText) classView.findViewById(R.id.classCodetxt);
         save = (Button) classView.findViewById(R.id.add);
         cancel = (Button) classView.findViewById(R.id.cancel);
         fd = FirebaseDatabase.getInstance();
@@ -66,7 +69,7 @@ public class AddClassFragmentDialog extends DialogFragment {
                         for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                             ClassRoom cr = snapshot.getValue(ClassRoom.class);
 
-                            if(cr.getClassRoomID().equals()){
+                            if(cr.getClassRoomID().equals(classId.toString())){
 
                             }
 
@@ -77,7 +80,7 @@ public class AddClassFragmentDialog extends DialogFragment {
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
-                })
+                });
 
                 dismiss();
             }

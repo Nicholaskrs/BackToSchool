@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             Toast.makeText(Login.this, "Username or password must be filled", Toast.LENGTH_SHORT).show();
             else {
 
-
+                btnLogin.setEnabled(false);
                 mfauth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(Task<AuthResult> task) {
@@ -93,7 +93,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             startActivity(intent);
 
                         }
-
+                btnLogin.setEnabled(true);
                     }
                 });
 

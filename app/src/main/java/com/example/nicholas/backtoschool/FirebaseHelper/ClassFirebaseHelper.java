@@ -27,7 +27,7 @@ public class ClassFirebaseHelper {
         this.db=db;
     }
 
-    public boolean savedata(ClassRoom classRoom,String uid) {
+    public boolean addclassroom(ClassRoom classRoom) {
         if (classRoom == null)
             return false;
 

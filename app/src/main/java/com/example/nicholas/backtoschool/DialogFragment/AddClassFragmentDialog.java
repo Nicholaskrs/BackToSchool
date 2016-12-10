@@ -1,4 +1,4 @@
-package com.example.nicholas.backtoschool;
+package com.example.nicholas.backtoschool.DialogFragment;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.nicholas.backtoschool.R;
 
 /**
  * Created by Christina on 12/9/2016.

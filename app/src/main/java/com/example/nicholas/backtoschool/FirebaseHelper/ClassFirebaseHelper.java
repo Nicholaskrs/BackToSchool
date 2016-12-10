@@ -8,8 +8,10 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -25,17 +27,18 @@ public class ClassFirebaseHelper {
 
     public ClassFirebaseHelper(DatabaseReference db){
         this.db=db;
+
     }
 
-    public boolean addclassroom(ClassRoom classRoom) {
+    public String addclassroom(ClassRoom classRoom) {
         if (classRoom == null)
-            return false;
+            return "Classroom is null";
 
             try {
                 db.child("Class").child(classRoom.getClassRoomID()).setValue(classRoom);
-                return true;
+                return "Success";
             } catch (Exception e) {
-                return false;
+                return e.toString();
             }
 
     }
@@ -53,7 +56,7 @@ public class ClassFirebaseHelper {
         if(find)
         {
             ClassRoom tempclass=classRooms.get(classindex);
-            Vector<String> u=tempclass.getUserID();
+            List<String> u=tempclass.getUserID();
             if(u.contains(userid))
                 return "You already in the class";
             tempclass.addUser(user);
@@ -111,7 +114,7 @@ public class ClassFirebaseHelper {
         if(find)
         {
             ClassRoom tempclass=classRooms.get(classindex);
-            Vector<Forum>tempforums=tempclass.getForums();
+            List<Forum>tempforums=tempclass.getForums();
             int forumindex=-1;
             for(int i=0;i<tempforums.size();i++){
                 if(tempforums.get(i).getForumID().equals(forumid)) {
@@ -144,37 +147,30 @@ public class ClassFirebaseHelper {
         classRooms.clear();
 
         for (DataSnapshot u :dataSnapshot.getChildren()) {
+
             ClassRoom temp=u.getValue(ClassRoom.class);
+
             classRooms.add(temp);
+            System.out.println(classRooms.size());
+
         }
     }
     public ArrayList<ClassRoom> retrieve(){
-        db.addChildEventListener(new ChildEventListener() {
+        db.child("Class").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 fenchData(dataSnapshot);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                fenchData(dataSnapshot);
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                System.out.println(databaseError.toString());
             }
         });
+        return classRooms;
+    }
+    public ArrayList<ClassRoom> getClassRooms(){
         return classRooms;
     }
 }

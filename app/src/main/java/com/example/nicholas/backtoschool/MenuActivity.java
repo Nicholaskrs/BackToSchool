@@ -1,13 +1,11 @@
 package com.example.nicholas.backtoschool;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.AttributeSet;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,24 +16,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.CustomAdapter.ViewPagerAdapter;
-import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
+import com.example.nicholas.backtoschool.DialogFragment.AddClassFragmentDialog;
+import com.example.nicholas.backtoschool.DialogFragment.MakeClassFragmentDialog;
 import com.example.nicholas.backtoschool.Model.User;
-import com.example.nicholas.backtoschool.Utilities.Encrypt;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -168,7 +159,9 @@ public class MenuActivity extends AppCompatActivity
             afd.show(fm, "Add Class");
         }
         else if (id == R.id.nav_slideshow) {
-
+            android.app.FragmentManager fm = getFragmentManager();
+            MakeClassFragmentDialog afd = new MakeClassFragmentDialog();
+            afd.show(fm, "Make Class");
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

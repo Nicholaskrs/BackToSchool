@@ -1,6 +1,8 @@
 package com.example.nicholas.backtoschool.Model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Vector;
 
 public class Forum {
     private String forumTopic,forumID,madeby,forumcontent;
-    private Vector<Reply> replies;
+    private List<Reply> replies=new ArrayList<>();
     private Date createat;
 
     public Date getCreateat() {
@@ -52,11 +54,11 @@ public class Forum {
         this.forumcontent = forumcontent;
     }
 
-    public Vector<Reply> getReplies() {
+    public List<Reply> getReplies() {
         return replies;
     }
 
-    public void setReplies(Vector<Reply> replies) {
+    public void setReplies(ArrayList<Reply> replies) {
         this.replies = replies;
     }
     public void addReplies(Reply reply){

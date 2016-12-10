@@ -14,6 +14,9 @@ public class ClassRoom {
     private Vector<User>users;
     private Vector<String>userID;
 
+    public void addforum(Forum forum){
+        forums.add(forum);
+    }
     public void adduserid(String userid){
         userID.add(userid);
     }

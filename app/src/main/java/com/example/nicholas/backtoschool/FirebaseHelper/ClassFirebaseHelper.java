@@ -23,11 +23,8 @@ public class ClassFirebaseHelper {
     boolean saved;
     ArrayList<ClassRoom> classRooms=new ArrayList<ClassRoom>();
 
-
-
     public ClassFirebaseHelper(DatabaseReference db){
         this.db=db;
-
     }
 
     public String addclassroom(ClassRoom classRoom) {
@@ -40,8 +37,8 @@ public class ClassFirebaseHelper {
             } catch (Exception e) {
                 return e.toString();
             }
-
     }
+
     public String adduser(String classRoomID,String userid,User user){
         if(classRooms.isEmpty())
             retrieve();
@@ -66,7 +63,7 @@ public class ClassFirebaseHelper {
         }
         return "ClassID not found";
     }
-    public String addnewforum(Forum forum,String ClassID)
+    public String addnewforum(Forum forum, String ClassID)
     {
         if(forum==null)
             return "Forum Value is null";

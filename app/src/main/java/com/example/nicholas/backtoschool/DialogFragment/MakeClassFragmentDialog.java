@@ -35,10 +35,11 @@ public class MakeClassFragmentDialog extends DialogFragment {
     ClassFirebaseHelper cfh;
     DatabaseReference db;
     FirebaseAuth mfauth;
-ArrayList<ClassRoom> classRooms;
+    ArrayList<ClassRoom> classRooms;
     Context context;
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+/*
         mfauth=FirebaseAuth.getInstance();
         View classView = inflater.inflate(R.layout.fragment_makeclass, container, false);
         context=classView.getContext();
@@ -47,9 +48,6 @@ ArrayList<ClassRoom> classRooms;
         cfh=new ClassFirebaseHelper(db);
         classRooms = new ArrayList<>();
         cfh.retrieve();
-
-
-
 
         classId=(EditText)classView.findViewById(R.id.ClassRoomID);
         className=(EditText)classView.findViewById(R.id.ClassName);
@@ -68,8 +66,7 @@ ArrayList<ClassRoom> classRooms;
             public void onClick(View view) {
 
             boolean find=false;
-                classRooms=cfh.getClassRooms();
-
+            classRooms=cfh.getClassRooms();
 
             for(int i=0;i<classRooms.size();i++) {
                 if(classRooms.get(i).getClassRoomID().equals(classId.getText().toString().trim())) {
@@ -86,8 +83,6 @@ ArrayList<ClassRoom> classRooms;
                 classroom.setClassRoomID(classId.getText().toString().trim());
                 classroom.setClassName(className.getText().toString().trim());
 
-
-
                 String kata=cfh.addclassroom(classroom);
                 Toast.makeText(context, kata, Toast.LENGTH_SHORT).show();
                 dismiss();
@@ -98,6 +93,7 @@ ArrayList<ClassRoom> classRooms;
             }
         });
 
-        return classView;
+        return classView;*/
+        return null;
     }
 }

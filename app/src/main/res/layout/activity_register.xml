@@ -25,22 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Student ID"
             android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
 
-        <EditText
-            android:id="@+id/txtStudentID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,6 +41,7 @@
         <EditText
             android:id="@+id/txtUsername"
             android:layout_width="match_parent"
+            android:textColor="#ffffff"
             android:inputType="textEmailAddress"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -71,6 +59,7 @@
         <EditText
             android:id="@+id/txtPassword"
             android:layout_width="match_parent"
+            android:textColor="#ffffff"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:layout_marginLeft="20dp"
@@ -90,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:textColor="#ffffff"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
 
@@ -105,6 +95,7 @@
         <EditText
             android:id="@+id/txtschool"
             android:layout_width="match_parent"
+            android:textColor="#ffffff"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
@@ -122,6 +113,7 @@
             android:id="@+id/txtAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#ffffff"
             android:inputType="number"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
@@ -142,6 +134,7 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColor="#ffffff"
             android:layout_gravity="center_horizontal"></GridLayout>
 
 

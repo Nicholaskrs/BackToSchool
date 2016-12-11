@@ -112,6 +112,6 @@ public class MakeClassFragmentDialog extends DialogFragment {
         });
 
         return classView;
-
+       
     }
 }

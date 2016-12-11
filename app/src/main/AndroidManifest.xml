@@ -41,7 +41,7 @@
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
 
-            android:theme="@android:style/Theme.Holo"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>

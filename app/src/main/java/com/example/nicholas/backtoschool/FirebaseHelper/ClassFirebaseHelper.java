@@ -63,6 +63,7 @@ public class ClassFirebaseHelper {
         }
         return "ClassID not found";
     }
+
     public String addnewforum(Forum forum, String ClassID)
     {
         if(forum==null)
@@ -90,38 +91,6 @@ public class ClassFirebaseHelper {
 
         }
         return "Class not found";
-
-    }
-
-    public String addUser(String classID,String userID,User user){
-        if(user==null)
-            return "User value is null";
-        if(classRooms.isEmpty())
-            retrieve();
-        boolean find=false;
-        int classindex=0;
-        for(int i=0;i<classRooms.size();i++){
-            if(classRooms.get(i).getClassRoomID().equals(classID)) {
-                find = true;
-                classindex=i;
-                break;
-            }
-        }
-        if(find)
-        {
-            ClassRoom tempclass=classRooms.get(classindex);
-            try {
-                tempclass.adduserid(userID);
-                tempclass.addUser(user);
-                db.child("Class").child(classID).setValue(tempclass);
-                return "User added Successfully";
-            } catch (Exception e) {
-                return "Firebase Error";
-            }
-
-        }
-        return "Class not found";
-
     }
 
     public String replyforum(String forumid, String ClassID, Reply reply)
@@ -183,6 +152,7 @@ public class ClassFirebaseHelper {
 
         }
     }
+
     public ArrayList<ClassRoom> retrieve(){
         db.child("Class").addValueEventListener(new ValueEventListener() {
             @Override

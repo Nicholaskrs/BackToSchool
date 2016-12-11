@@ -1,11 +1,13 @@
 package com.example.nicholas.backtoschool;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
@@ -32,6 +34,12 @@ public class ClassDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_detail);
 
+        Intent intent = getIntent();
+
+        cId = intent.getStringExtra("classId");
+
+        Toast.makeText(getApplicationContext(), "Class Id = "+cId, Toast.LENGTH_SHORT).show();
+
         fd = FirebaseDatabase.getInstance();
         dbClass = fd.getReference().child("Class");
         cfh = new ClassFirebaseHelper(dbClass);
@@ -50,8 +58,9 @@ public class ClassDetailActivity extends Activity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     ClassRoom cr = snapshot.getValue(ClassRoom.class);
 
-                    if(cr.getClassRoomID().equals("")){
-
+                    if(cr.getClassRoomID().equals(cId)){
+                        classTitle.setText(cr.getClassName());
+                        classId.setText(cId);
                     }
                 }
             }
@@ -86,7 +95,9 @@ public class ClassDetailActivity extends Activity {
         students.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(ClassDetailActivity.this, ViewStudentsActivity.class);
+                intent.putExtra("classId", cId);
+                startActivity(intent);
             }
         });
 

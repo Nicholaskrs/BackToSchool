@@ -38,23 +38,6 @@
             android:textSize="25dp"
             android:layout_marginBottom="20dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Teacher/Lecturer"
-            android:id="@+id/teacherlbl"
-            android:layout_gravity="center_horizontal"
-            android:textStyle="bold"
-            android:textSize="25dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="lecture"
-            android:id="@+id/lecturetxt"
-            android:layout_gravity="center_horizontal"
-            android:textSize="25dp" />
-
         <Button
             android:id="@+id/addActivity"
             android:text="Add Activity"
@@ -103,21 +86,6 @@
         <Button
             android:id="@+id/viewStudents"
             android:text="View Students"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="#fff"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="30dp"
-            android:textStyle="bold"
-            android:background="#3480e4"
-            android:height="50dp"
-            style="@style/Base.TextAppearance.AppCompat.Button" />
-
-        <Button
-            android:id="@+id/addScore"
-            android:text="Add Score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"

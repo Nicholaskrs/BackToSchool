@@ -2,12 +2,14 @@ package com.example.nicholas.backtoschool;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
+import com.example.nicholas.backtoschool.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +25,7 @@ public class ClassDetailActivity extends Activity {
     FirebaseDatabase fd;
     DatabaseReference dbClass;
     FirebaseAuth fba;
+    String className = "", cId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +39,10 @@ public class ClassDetailActivity extends Activity {
 
         classTitle = (TextView) findViewById(R.id.classTitleLbl);
         classId = (TextView) findViewById(R.id.classidtxt);
-        lecturer = (TextView) findViewById(R.id.lecturetxt);
         activity = (Button) findViewById(R.id.addActivity);
         forum = (Button) findViewById(R.id.viewForum);
         viewScore = (Button) findViewById(R.id.viewScore);
         students = (Button) findViewById(R.id.viewStudents);
-        addScore = (Button) findViewById(R.id.addScore);
 
         dbClass.addValueEventListener(new ValueEventListener() {
             @Override
@@ -61,6 +62,33 @@ public class ClassDetailActivity extends Activity {
             }
         });
 
+       activity.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+           }
+       });
+
+        forum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        viewScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        students.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 }

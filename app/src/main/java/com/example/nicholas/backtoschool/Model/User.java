@@ -1,6 +1,7 @@
 package com.example.nicholas.backtoschool.Model;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Nicholas on 12/3/2016.
@@ -9,8 +10,8 @@ public class User {
 
     private String name,username,school,educationalLevel,gender,studentNumber;
     private int age;
-    private Vector<ClassReminder> schedule;
-    private Vector<ClassRoom>classRooms;
+    private List<ClassReminder> schedule;
+    private List<ClassRoom> classRooms;
 
     public void addclassroom(ClassRoom classroom){
         classRooms.add(classroom);
@@ -18,19 +19,19 @@ public class User {
     public void addreminder(ClassReminder classReminder){
         schedule.add(classReminder);
     }
-    public Vector<ClassReminder> getSchedule() {
+    public List<ClassReminder> getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(Vector<ClassReminder> schedule) {
+    public void setSchedule(ArrayList<ClassReminder> schedule) {
         this.schedule = schedule;
     }
 
-    public Vector<ClassRoom> getClassRooms() {
+    public List<ClassRoom> getClassRooms() {
         return classRooms;
     }
 
-    public void setClassRooms(Vector<ClassRoom> classRooms) {
+    public void setClassRooms(ArrayList<ClassRoom> classRooms) {
         this.classRooms = classRooms;
     }
 

@@ -88,8 +88,22 @@ ArrayList<ClassRoom> classRooms;
 
 
 
-                String kata=cfh.addclassroom(classroom);
-                Toast.makeText(context, kata, Toast.LENGTH_SHORT).show();
+                //String kata=cfh.addclassroom(classroom);
+                //Toast.makeText(context, kata, Toast.LENGTH_SHORT).show();
+                /*Forum frm=new Forum();
+                frm.setMadeby("ME");
+                frm.setForumTopic("asdasd");
+                frm.setForumID("asd");
+                frm.setForumcontent("asdasd");
+                frm.setCreateat(new Date(System.currentTimeMillis()));
+
+                cfh.addnewforum(frm,"testing2");*/
+                Reply rep=new Reply();
+                rep.setReplyID("asdasd");
+                rep.setReplyDate(new Date(System.currentTimeMillis()));
+                rep.setReplycontent("asdasd");
+                rep.setRepliedby("asd");
+                cfh.replyforum("asd","testing2",rep);
                 dismiss();
             }
 

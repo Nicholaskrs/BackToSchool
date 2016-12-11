@@ -1,7 +1,12 @@
 package com.example.nicholas.backtoschool.Model;
 
+import android.support.annotation.NonNull;
+
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by Nicholas on 12/3/2016.
@@ -11,7 +16,7 @@ public class User {
     private String name,username,school,educationalLevel,gender,studentNumber;
     private int age;
     private List<ClassReminder> schedule;
-    private List<ClassRoom> classRooms;
+    private List<ClassRoom> classRooms = new ArrayList<>();
 
     public void addclassroom(ClassRoom classroom){
         classRooms.add(classroom);
@@ -76,8 +81,6 @@ public class User {
     public void setSchool(String school) {
         this.school = school;
     }
-
-
 
 
     public String getUsername() {

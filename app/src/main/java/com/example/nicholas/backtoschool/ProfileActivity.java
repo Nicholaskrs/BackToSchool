@@ -121,6 +121,7 @@ public class ProfileActivity extends AppCompatActivity {
                     db.child(userId).child("age").setValue(Integer.parseInt(agetxt.getText().toString()));
                     db.child(userId).child("gender").setValue(gendertxt.getText().toString());
                     db.child(userId).child("educationalLevel").setValue(edutxt.getText().toString());
+                    db.child(userId).child("school").setValue(univtxt.getText().toString());
 
                     Toast.makeText(getApplicationContext(), "Change profile succeed!", Toast.LENGTH_SHORT).show();
 

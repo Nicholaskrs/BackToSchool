@@ -122,25 +122,42 @@ public class AddClassFragmentDialog extends DialogFragment {
                     }
 
                 }
+                if(crName.equals(""))
+                {
+                    Toast.makeText(view.getContext(), "Class room not found", Toast.LENGTH_SHORT).show();
+                }else {
 
-                cr = new ClassRoom();
-                cr.setClassRoomID(cId);
-                cr.setClassMasterID(classMasterId);
-                cr.setClassName(crName);
+                    cr = new ClassRoom();
+                    cr.setClassRoomID(cId);
+                    cr.setClassMasterID(classMasterId);
+                    cr.setClassName(crName);
 
-                for(User user : users){
-                    if(user.getUsername().equals(email)){
-                        user.addclassroom(cr);
-                        dbUser.child(id).setValue(user);
-                        cfh.adduser(classId.toString(), id, user);
-                        Toast.makeText(view.getContext(), "user: "+user.getUsername(), Toast.LENGTH_SHORT).show();
+                    for (User user : users) {
+                        if (user.getUsername().equals(email)) {
+                            boolean already=false;
+                            for(int i=0;i<user.getClassRooms().size();i++){
+                                if(user.getClassRooms().get(i).getClassRoomID().equals(cId)) {
+                                already=true;
+                                    break;
+                                }
+                            }
+                            if(already){
+                                Toast.makeText(view.getContext(), "You Already in the class", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                user.addclassroom(cr);
+                                dbUser.child(id).setValue(user);
+                                cfh.adduser(classId.toString(), id, user);
+                                Toast.makeText(view.getContext(), "user: " + user.getUsername(), Toast.LENGTH_SHORT).show();
 
-                        break;
+                                break;
+                            }
+                        }
                     }
-                }
 
-                Toast.makeText(view.getContext(), "Class room added successfully!", Toast.LENGTH_SHORT).show();
-                dismiss();
+                    Toast.makeText(view.getContext(), "Class room added successfully!", Toast.LENGTH_SHORT).show();
+                    dismiss();
+                }
             }
         });
 

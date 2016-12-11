@@ -48,7 +48,6 @@ public class CalendarFragment extends Fragment {
 
         CalendarView cv = (CalendarView)view.findViewById(R.id.calendar_view);
         cv.updateCalendar(events);
-        Toast.makeText(getContext(), "Called", Toast.LENGTH_SHORT).show();
         // assign event handler
         cv.setEventHandler(new CalendarView.EventHandler() {
             @Override

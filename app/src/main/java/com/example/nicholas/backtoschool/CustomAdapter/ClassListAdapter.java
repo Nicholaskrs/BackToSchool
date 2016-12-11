@@ -44,7 +44,7 @@ public class ClassListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view==null){
-            view= LayoutInflater.from(c).inflate(R.layout.classlistview,null,false);
+            view= LayoutInflater.from(c).inflate(R.layout.classlistview,viewGroup,false);
         }
         TextView id=(TextView)view.findViewById(R.id.classID);
         TextView name=(TextView)view.findViewById(R.id.className);
@@ -53,8 +53,8 @@ public class ClassListAdapter extends BaseAdapter {
 
         id.setText(cr.getClassRoomID());
         name.setText(cr.getClassName());
+        System.out.println("here");
 
-        //TODO onclick pindah ke detail class
 
 
         return view;

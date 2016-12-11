@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
+import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.ClassReminder;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
 import com.example.nicholas.backtoschool.Model.Forum;
@@ -18,8 +19,11 @@ import com.example.nicholas.backtoschool.Model.Reply;
 import com.example.nicholas.backtoschool.Model.User;
 import com.example.nicholas.backtoschool.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,19 +37,43 @@ public class MakeClassFragmentDialog extends DialogFragment {
     Button save, cancel;
     EditText classId,className;
     ClassFirebaseHelper cfh;
-    DatabaseReference db;
+    DatabaseReference db,dbu;
+
     FirebaseAuth mfauth;
     ArrayList<ClassRoom> classRooms;
     Context context;
-
+ArrayList<User> users;
+    User publicuser=new User();
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         mfauth=FirebaseAuth.getInstance();
+
         View classView = inflater.inflate(R.layout.fragment_makeclass, container, false);
         context=classView.getContext();
         getDialog().setTitle("Make Class");
         db = FirebaseDatabase.getInstance().getReference();
         cfh=new ClassFirebaseHelper(db);
+        dbu= db.child("Users");
+        dbu.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    User user = snapshot.getValue(User.class);
+                    if(user!=null&&user.getUsername().equals(mfauth.getCurrentUser().getEmail())){
+
+                        publicuser=user;
+
+
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         classRooms = new ArrayList<>();
         cfh.retrieve();
 
@@ -82,26 +110,22 @@ public class MakeClassFragmentDialog extends DialogFragment {
                 classroom.setClassMasterID(mfauth.getCurrentUser().getUid());
                 classroom.setClassRoomID(classId.getText().toString().trim());
                 classroom.setClassName(className.getText().toString().trim());
+                classroom.adduserid(mfauth.getCurrentUser().getUid());
 
 
 
 
-                //String kata=cfh.addclassroom(classroom);
-                //Toast.makeText(context, kata, Toast.LENGTH_SHORT).show();
-                /*Forum frm=new Forum();
-                frm.setMadeby("ME");
-                frm.setForumTopic("asdasd");
-                frm.setForumID("asd");
-                frm.setForumcontent("asdasd");
-                frm.setCreateat(new Date(System.currentTimeMillis()));
 
-                cfh.addnewforum(frm,"testing2");*/
-                Reply rep=new Reply();
-                rep.setReplyID("asdasd");
-                rep.setReplyDate(new Date(System.currentTimeMillis()));
-                rep.setReplycontent("asdasd");
-                rep.setRepliedby("asd");
-                cfh.replyforum("asd","testing2",rep);
+
+                String kata=cfh.addclassroom(classroom);
+                Toast.makeText(context, kata, Toast.LENGTH_SHORT).show();
+
+                publicuser.addclassroom(classroom);
+                dbu.child(mfauth.getCurrentUser().getUid()).setValue(publicuser);
+                classroom.addUser(publicuser);
+
+                classroom.addUser(publicuser);
+                publicuser.addclassroom(classroom);
 
                 dismiss();
             }

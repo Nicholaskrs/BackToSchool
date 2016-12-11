@@ -90,29 +90,13 @@ public class AddClassFragmentDialog extends DialogFragment {
                     }
                 });
 
-                dbUser.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                            User user = snapshot.getValue(User.class);
 
-                            if(user.getUsername().equals(email)){
-                                ClassRoom cr = new ClassRoom();
+                ClassRoom cr = new ClassRoom();
+                cr.setClassRoomID(classId.toString());
+                cr.setClassMasterID(classMasterId);
+                cr.setClassName(crName);
 
-                                cr.setClassRoomID(classId.toString());
-                                cr.setClassMasterID(classMasterId);
-                                cr.setClassName(crName);
-
-                                dbUser.child(id).setValue(cr);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+                dbUser.child(id).setValue(cr);
 
                 dismiss();
             }

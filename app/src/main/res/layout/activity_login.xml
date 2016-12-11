@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:background="@drawable/bg5"
+    android:background="@drawable/bg7"
     android:weightSum="1">
     <TextView
         android:id="@+id/emaillbl"
@@ -59,8 +59,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="30dp"
         android:textStyle="bold"
-        android:background="#da3e36"
-        android:height="50dp"/>
+        android:background="#3480e4"
+        android:height="50dp"
+        style="@style/Base.TextAppearance.AppCompat.Button" />
 
     <Button
         android:layout_width="fill_parent"
@@ -71,9 +72,12 @@
         android:textColor="#fff"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:textStyle="bold"
         android:height="50dp"
-        android:background="#e9a022" />
+        android:background="#3480e4"
+        style="@style/Base.TextAppearance.AppCompat.Button" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
@@ -21,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by Christina on 12/9/2016.
@@ -34,9 +36,12 @@ public class AddClassFragmentDialog extends DialogFragment {
     FirebaseDatabase fd;
     DatabaseReference dbClass;
     DatabaseReference dbUser;
+    ClassRoom cr;
     FirebaseAuth fba;
     String id = "", email = "";
-    String classMasterId = "", crName = "";
+    String classMasterId = "", crName = "", cId = "";
+    ArrayList<ClassRoom> classRoom = new ArrayList<ClassRoom>();
+    ArrayList<User> users = new ArrayList<User>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,74 +54,92 @@ public class AddClassFragmentDialog extends DialogFragment {
         cancel = (Button) classView.findViewById(R.id.cancel);
         fd = FirebaseDatabase.getInstance();
         dbClass = fd.getReference().child("Class");
-        dbUser = fd.getReference().child("User");
+        dbUser = fd.getReference().child("Users");
         cfh = new ClassFirebaseHelper(dbClass);
         fba = FirebaseAuth.getInstance();
 
         id = fba.getCurrentUser().getUid();
         email = fba.getCurrentUser().getEmail();
 
-        cancel.setOnClickListener(new View.OnClickListener(){
+        dbClass.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ClassRoom cr = snapshot.getValue(ClassRoom.class);
+
+                    classRoom.add(cr);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        dbUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    User user = snapshot.getValue(User.class);
+
+                    if (user.getUsername().equals(email)) {
+
+                        users.add(user);
+
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismiss();
             }
         });
 
-        save.setOnClickListener(new View.OnClickListener(){
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
 
-                dbClass.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            ClassRoom cr = snapshot.getValue(ClassRoom.class);
+                cId = classId.getText().toString();
 
-                            if (cr.getClassRoomID().equals(classId.toString())) {
+                for(ClassRoom cr : classRoom){
 
-                                classMasterId = cr.getClassMasterID();
-                                crName = cr.getClassName();
+                    if(cr.getClassRoomID().equals(cId)){
+                        crName = cr.getClassName();
+                        classMasterId = cr.getClassMasterID();
 
-                            }
-
-                        }
+                        break;
                     }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                }
 
-                    }
-                });
-
-
-                ClassRoom cr = new ClassRoom();
-                cr.setClassRoomID(classId.toString());
+                cr = new ClassRoom();
+                cr.setClassRoomID(cId);
                 cr.setClassMasterID(classMasterId);
                 cr.setClassName(crName);
 
-                dbUser.child(id).setValue(cr);
+                for(User user : users){
+                    if(user.getUsername().equals(email)){
+                        user.addclassroom(cr);
+                        dbUser.child(id).setValue(user);
+                        cfh.adduser(classId.toString(), id, user);
+                        Toast.makeText(view.getContext(), "user: "+user.getUsername(), Toast.LENGTH_SHORT).show();
 
-                dbUser.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                            User user = snapshot.getValue(User.class);
-
-                            if(user.getUsername().equals(email)){
-
-                                cfh.adduser(classId.toString(), id, user);
-
-                            }
-                        }
+                        break;
                     }
+                }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
+                Toast.makeText(view.getContext(), "Class room added successfully!", Toast.LENGTH_SHORT).show();
                 dismiss();
             }
         });

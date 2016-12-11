@@ -7,7 +7,6 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoTitle">
         <activity android:name=".MainActivity">
@@ -17,8 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login"  android:theme="@style/AppTheme.NoTitle"/>
-        <activity android:name=".Register"  android:theme="@style/AppTheme.NoTitle"/>
+        <activity
+            android:name=".Login"
+            android:theme="@style/AppTheme.NoTitle" />
+        <activity
+            android:name=".Register"
+            android:theme="@style/AppTheme.NoTitle" />
         <activity android:name=".CalendarActivity" />
 
         <meta-data
@@ -40,8 +43,8 @@
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
-
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".ClassDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -36,6 +36,7 @@ public class MenuActivity extends AppCompatActivity
     FirebaseAuth mfauth;
     TabLayout tabLayout;
     ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,16 +159,20 @@ public class MenuActivity extends AppCompatActivity
             AddClassFragmentDialog afd = new AddClassFragmentDialog();
             afd.show(fm, "Add Class");
         }
-        else if (id == R.id.nav_slideshow) {
+        else if (id == R.id.nav_makeClass) {
             android.app.FragmentManager fm = getFragmentManager();
             MakeClassFragmentDialog afd = new MakeClassFragmentDialog();
             afd.show(fm, "Make Class");
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        }
+        else if (id == R.id.nav_logout) {
+            Intent intent = new Intent(MenuActivity.this, Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            finish();
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -39,7 +39,7 @@ public class MakeClassFragmentDialog extends DialogFragment {
     Context context;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-/*
+
         mfauth=FirebaseAuth.getInstance();
         View classView = inflater.inflate(R.layout.fragment_makeclass, container, false);
         context=classView.getContext();
@@ -84,8 +84,6 @@ public class MakeClassFragmentDialog extends DialogFragment {
                 classroom.setClassName(className.getText().toString().trim());
 
 
-
-
                 //String kata=cfh.addclassroom(classroom);
                 //Toast.makeText(context, kata, Toast.LENGTH_SHORT).show();
                 /*Forum frm=new Forum();
@@ -112,6 +110,5 @@ public class MakeClassFragmentDialog extends DialogFragment {
         });
 
         return classView;
-        return null;
     }
 }

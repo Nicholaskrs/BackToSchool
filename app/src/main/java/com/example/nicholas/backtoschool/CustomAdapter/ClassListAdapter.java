@@ -44,7 +44,7 @@ public class ClassListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view==null){
-            view= LayoutInflater.from(c).inflate(R.layout.classlistview,viewGroup,false);
+            view= LayoutInflater.from(c).inflate(R.layout.classlistview,null,false);
         }
         TextView id=(TextView)view.findViewById(R.id.classID);
         TextView name=(TextView)view.findViewById(R.id.className);

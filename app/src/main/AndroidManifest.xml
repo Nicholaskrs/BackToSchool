@@ -7,9 +7,9 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoTitle">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,8 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".Register" />
+        <activity android:name=".Login"  android:theme="@style/AppTheme.NoTitle"/>
+        <activity android:name=".Register"  android:theme="@style/AppTheme.NoTitle"/>
         <activity android:name=".CalendarActivity" />
 
         <meta-data
@@ -41,7 +41,7 @@
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
 
-            android:theme="@android:style/Theme.Holo"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>

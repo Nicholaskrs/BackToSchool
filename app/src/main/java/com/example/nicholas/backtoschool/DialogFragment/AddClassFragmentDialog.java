@@ -142,7 +142,7 @@ public class AddClassFragmentDialog extends DialogFragment {
                                 }
                             }
                             if(already){
-                                Toast.makeText(view.getContext(), "You Already in the class", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(view.getContext(), "You are already in the class!", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 user.addclassroom(cr);

@@ -1,13 +1,17 @@
 package com.example.nicholas.backtoschool.CustomAdapter;
 
 import android.content.Context;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.example.nicholas.backtoschool.Model.User;
 import com.example.nicholas.backtoschool.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -46,6 +50,16 @@ public class UserAdapter extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
+        if(view == null){
+            view = LayoutInflater.from(c).inflate(R.layout.userslist, viewGroup, false);
+        }
+
+        TextView email = (TextView) view.findViewById(R.id.emailtxt);
+        TextView name = (TextView) view.findViewById(R.id.nametxt);
+        TextView age = (TextView) view.findViewById(R.id.agetxt);
+
+        User user = (User) this.getItem(i);
 
         return view;
     }

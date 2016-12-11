@@ -55,8 +55,6 @@ public class ClassListAdapter extends BaseAdapter {
         name.setText(cr.getClassName());
         System.out.println("here");
 
-
-
         return view;
     }
 }

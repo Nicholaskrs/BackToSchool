@@ -95,7 +95,9 @@ public class ClassDetailActivity extends Activity {
         students.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(ClassDetailActivity.this, ViewStudentsActivity.class);
+                intent.putExtra("classId", cId);
+                startActivity(intent);
             }
         });
 

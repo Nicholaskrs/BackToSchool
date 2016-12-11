@@ -64,7 +64,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         txtcpassword=(EditText)findViewById(R.id.txtcPassword);
         txtname=(EditText)findViewById(R.id.txtName);
         txtage=(EditText)findViewById(R.id.txtAge);
-        txtStudentID=(EditText)findViewById(R.id.txtStudentID);
         txtschool=(EditText)findViewById(R.id.txtschool);
         radioGroup=(RadioGroup)findViewById(R.id.rbggender);
         usr=ufh.retrieve();
@@ -123,7 +122,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         boolean check=ufh.savedata(u, id);
                         Toast.makeText(Register.this, "Save data"+check, Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(Register.this, CalendarActivity.class);
+                        Intent intent = new Intent(Register.this, MenuActivity.class);
                         startActivity(intent);
                         finish();
                     }

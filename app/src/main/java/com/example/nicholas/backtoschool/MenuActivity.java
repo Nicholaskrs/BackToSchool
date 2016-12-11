@@ -72,7 +72,7 @@ public class MenuActivity extends AppCompatActivity
         ViewPagerAdapter vpadapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         vpadapter.add(new CalendarFragment(),"Calendar");
-        vpadapter.add(new testing(),"test");
+//        vpadapter.add(new ClassList(),"My Class");
         viewPager.setAdapter(vpadapter);
         tabLayout.setupWithViewPager(viewPager);
 

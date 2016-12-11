@@ -1,6 +1,7 @@
 package com.example.nicholas.backtoschool;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 public class ClassList extends Fragment {
     FirebaseAuth fba;
     DatabaseReference db;
-ArrayList<ClassRoom>classRooms=new ArrayList<>();
+    ArrayList<ClassRoom>classRooms=new ArrayList<>();
     User curruser=new User();
     public ClassList() {
 
@@ -39,6 +40,7 @@ ArrayList<ClassRoom>classRooms=new ArrayList<>();
     }
     private ArrayList<HashMap<String, String>> list;
     ListView listView ;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,14 +70,20 @@ ArrayList<ClassRoom>classRooms=new ArrayList<>();
                         System.out.println("curr user: "+curruser.getName());
                         final ClassListAdapter classAdapter = new ClassListAdapter(getContext(),curruser.getClassRooms());
                         listView.setAdapter(classAdapter);
-                        //TODO notes: chris disini taruh onclicknya klo udah line bgnin aku
+                        //TODO notes: Done -CX
+                        //TODO notes: -View students (Gw lg kerja yg ini ya) -Add activity -View forum -View score -Add Score -View Score -Facebook
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
                         {
                             @Override
                             public void onItemClick(AdapterView<?> parent, final View view, int position, long id)
                             {
                                 int pos=position+1;
-                                Toast.makeText(view.getContext(), ((ClassRoom)classAdapter.getItem(position)).getClassRoomID()+" Clicked", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(view.getContext(), ClassDetailActivity.class);
+                                intent.putExtra("classId", ((ClassRoom)classAdapter.getItem(position)).getClassRoomID());
+                                startActivity(intent);
+
+                                //Toast.makeText(view.getContext(), ((ClassRoom)classAdapter.getItem(position)).getClassRoomID()+" Clicked", Toast.LENGTH_SHORT).show();
                             }
 
                         });

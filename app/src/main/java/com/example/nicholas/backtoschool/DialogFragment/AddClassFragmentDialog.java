@@ -35,7 +35,6 @@ public class AddClassFragmentDialog extends DialogFragment {
     DatabaseReference dbClass;
     DatabaseReference dbUser;
     FirebaseAuth fba;
-    //ArrayList<ClassRoom> classRooms;
     String id = "", email = "";
     String classMasterId = "", crName = "";
 

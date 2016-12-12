@@ -1,7 +1,6 @@
 package com.example.nicholas.backtoschool.DialogFragment;
 
 import android.app.DialogFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,8 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
-import com.example.nicholas.backtoschool.Model.ClassRoom;
-import com.example.nicholas.backtoschool.Model.Forum;
+import com.example.nicholas.backtoschool.Model.Reply;
 import com.example.nicholas.backtoschool.Model.User;
 import com.example.nicholas.backtoschool.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,24 +26,23 @@ import java.util.Date;
 /**
  * Created by Christina on 12/12/2016.
  */
-public class AddForumFragmentDialog extends DialogFragment {
+public class AddReplyFragmentDialog extends DialogFragment {
 
     ClassFirebaseHelper cfh;
     FirebaseAuth fba;
     FirebaseDatabase fd;
     DatabaseReference dbClass;
     DatabaseReference dbUser;
-    EditText fId, fName, fContent;
+    EditText replyId, replyContent;
     Button add, cancel;
-    String uName = "";
-    String cId = "";
+    String fId = "", cId = "", rName = "";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View forumView = inflater.inflate(R.layout.fragment_addforum, container, false);
-        getDialog().setTitle("Add Forum");
+        final View replyView = inflater.inflate(R.layout.fragment_add_reply, container, false);
+        getDialog().setTitle("Add Reply");
 
         fba = FirebaseAuth.getInstance();
         fd = FirebaseDatabase.getInstance();
@@ -53,16 +50,15 @@ public class AddForumFragmentDialog extends DialogFragment {
         dbUser = fd.getReference().child("Users");
         cfh = new ClassFirebaseHelper(dbClass);
         cfh.retrieve();
-        fId = (EditText) forumView.findViewById(R.id.forumIdtxt);
-        fName = (EditText) forumView.findViewById(R.id.forumTopictxt);
-        fContent = (EditText) forumView.findViewById(R.id.forumContenttxt);
-        add = (Button) forumView.findViewById(R.id.add);
-        cancel = (Button) forumView.findViewById(R.id.cancel);
+
+        replyId = (EditText) replyView.findViewById(R.id.replyidtxt);
+        replyContent = (EditText) replyView.findViewById(R.id.contenttxt);
+        add = (Button) replyView.findViewById(R.id.add);
+        cancel = (Button) replyView.findViewById(R.id.cancel);
 
         Bundle b = getActivity().getIntent().getExtras();
         cId = b.getString("classId");
-
-        Toast.makeText(forumView.getContext(), "CId = " + cId, Toast.LENGTH_SHORT).show();
+        fId = b.getString("forumId");
 
         dbUser.addValueEventListener(new ValueEventListener() {
             @Override
@@ -71,9 +67,9 @@ public class AddForumFragmentDialog extends DialogFragment {
                     User user = snapshot.getValue(User.class);
 
                     if (user.getUsername().equals(fba.getCurrentUser().getEmail())) {
-                        uName = user.getName();
+                        rName = user.getName();
 
-                        break;
+                        Toast.makeText(replyView.getContext(), "Reply by: "+rName, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -83,6 +79,7 @@ public class AddForumFragmentDialog extends DialogFragment {
 
             }
         });
+
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,21 +91,22 @@ public class AddForumFragmentDialog extends DialogFragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Forum forum = new Forum();
-                forum.setForumID(fId.getText().toString());
-                forum.setForumTopic(fName.getText().toString());
-                forum.setForumcontent(fContent.getText().toString());
-                forum.setCreateat(new Date(System.currentTimeMillis()));
-                forum.setMadeby(uName);
 
-                Toast.makeText(view.getContext(), "Forum added successfully!", Toast.LENGTH_SHORT).show();
+                Reply reply = new Reply();
+                reply.setReplyID(replyId.getText().toString());
+                reply.setRepliedby(rName);
+                reply.setReplycontent(replyContent.getText().toString());
+                reply.setReplyDate(new Date(System.currentTimeMillis()));
+                cfh.replyforum(fId, cId, reply);
 
+                //oast.makeText(replyView.getContext(), "ReplyID = "+replyId.getText().toString(), Toast.LENGTH_SHORT).show();
 
                 dismiss();
             }
         });
 
-        return forumView;
-    }
 
+
+        return replyView;
+    }
 }

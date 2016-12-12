@@ -1,13 +1,10 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
-
-    <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#000">
+    android:background="#000">
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,5 +99,4 @@
             android:height="50dp"
             style="@style/Base.TextAppearance.AppCompat.Button" />
 
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

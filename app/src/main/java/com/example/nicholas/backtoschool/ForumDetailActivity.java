@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.CustomAdapter.ReplyAdapter;
+import com.example.nicholas.backtoschool.DialogFragment.AddForumFragmentDialog;
+import com.example.nicholas.backtoschool.DialogFragment.AddReplyFragmentDialog;
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
 import com.example.nicholas.backtoschool.Model.Forum;
@@ -34,7 +37,7 @@ public class ForumDetailActivity extends AppCompatActivity {
     TextView fTitle, madeBy, fdate, fcontent;
     Button reply;
     ListView replyList;
-    String fId = "", cId = "", fDate = "";
+    String fId = "", cId = "", fDate = "", creator = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +99,18 @@ public class ForumDetailActivity extends AppCompatActivity {
             }
         });
 
+        reply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.FragmentManager fm = getFragmentManager();
+                AddReplyFragmentDialog arf = new AddReplyFragmentDialog();
+                arf.show(fm, "Add Reply");
 
-
-        //Toast.makeText(getApplicationContext(), "ForumID = "+fId, Toast.LENGTH_SHORT).show();
+                Bundle b = new Bundle();
+                b.putString("classId", cId);
+                b.putString("forumId", fId);
+                arf.setArguments(b);
+            }
+        });
     }
 }

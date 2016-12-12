@@ -1,4 +1,4 @@
-package com.example.nicholas.backtoschool;
+package com.example.nicholas.backtoschool.Fragment;
 
 
 import android.content.Intent;
@@ -11,9 +11,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.nicholas.backtoschool.ClassDetailActivity;
 import com.example.nicholas.backtoschool.CustomAdapter.ClassListAdapter;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
 import com.example.nicholas.backtoschool.Model.User;
+import com.example.nicholas.backtoschool.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,7 +40,6 @@ public class ClassList extends Fragment {
         // Required empty public constructor
 
     }
-    private ArrayList<HashMap<String, String>> list;
     ListView listView ;
 
     @Override
@@ -66,7 +67,7 @@ public class ClassList extends Fragment {
                     if (user.getUsername().equals(email)) {
                         System.out.println("true");
                         curruser = user;
-                        Toast.makeText(getContext(),curruser.getName(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(),curruser.getName(), Toast.LENGTH_SHORT).show();
                         System.out.println("curr user: "+curruser.getName());
                         final ClassListAdapter classAdapter = new ClassListAdapter(getContext(),curruser.getClassRooms());
                         listView.setAdapter(classAdapter);

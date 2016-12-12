@@ -105,27 +105,37 @@ ArrayList<User> users;
             if(find){
                 Toast.makeText(context, "Class ID already used please enter another ID", Toast.LENGTH_SHORT).show();
             }
+            else if(classId.getText().toString().trim().equals("")||className.getText().toString().trim().equals("")){
+                Toast.makeText(context, "ID or Name must be filled", Toast.LENGTH_SHORT).show();
+            }
             else{
                 ClassRoom classroom=new ClassRoom();
                 classroom.setClassMasterID(mfauth.getCurrentUser().getUid());
                 classroom.setClassRoomID(classId.getText().toString().trim());
                 classroom.setClassName(className.getText().toString().trim());
+
+
+
+                publicuser.addclassroom(classroom);
+                dbu.child(mfauth.getCurrentUser().getUid()).setValue(publicuser);
+                //classroom.addUser(publicuser);
                 classroom.adduserid(mfauth.getCurrentUser().getUid());
 
 
 
 
 
+                User classmates=new User();
+                classmates.setUsername(publicuser.getUsername());
+                classmates.setName(publicuser.getName());
+                classmates.setGender(publicuser.getGender());
+                classmates.setEducationalLevel(publicuser.getEducationalLevel());
+                classmates.setAge(publicuser.getAge());
 
+                classroom.addUser(classmates);
                 String kata=cfh.addclassroom(classroom);
                 Toast.makeText(context, kata, Toast.LENGTH_SHORT).show();
 
-                publicuser.addclassroom(classroom);
-                dbu.child(mfauth.getCurrentUser().getUid()).setValue(publicuser);
-                classroom.addUser(publicuser);
-
-                classroom.addUser(publicuser);
-                publicuser.addclassroom(classroom);
 
                 dismiss();
             }

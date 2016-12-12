@@ -1,4 +1,4 @@
-package com.example.nicholas.backtoschool;
+package com.example.nicholas.backtoschool.Fragment;
 
 import android.app.DialogFragment;
 import android.os.Bundle;

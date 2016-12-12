@@ -55,8 +55,8 @@ public class ViewStudentsActivity extends Activity {
 
                         currClass = cr;
 
-                        //UserAdapter uAdapt = new UserAdapter(getApplicationContext(), currClass.getUsers());
-
+                        UserAdapter uAdapt = new UserAdapter(getApplicationContext(),(ArrayList<User>) currClass.getUsers());
+                        userLists.setAdapter(uAdapt);
                         break;
                     }
                 }

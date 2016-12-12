@@ -20,6 +20,8 @@ import android.widget.TextView;
 import com.example.nicholas.backtoschool.CustomAdapter.ViewPagerAdapter;
 import com.example.nicholas.backtoschool.DialogFragment.AddClassFragmentDialog;
 import com.example.nicholas.backtoschool.DialogFragment.MakeClassFragmentDialog;
+import com.example.nicholas.backtoschool.Fragment.CalendarFragment;
+import com.example.nicholas.backtoschool.Fragment.ClassList;
 import com.example.nicholas.backtoschool.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

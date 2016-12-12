@@ -44,6 +44,7 @@ public class ClassFirebaseHelper {
             retrieve();
         boolean find=false;
         int classindex=0;
+
         for(int i=0;i<classRooms.size();i++){
             if(classRooms.get(i).getClassRoomID().equals(classRoomID)) {
                 find = true;
@@ -142,13 +143,12 @@ public class ClassFirebaseHelper {
 
     public void fenchData(DataSnapshot dataSnapshot){
         classRooms.clear();
-
         for (DataSnapshot u :dataSnapshot.getChildren()) {
 
             ClassRoom temp=u.getValue(ClassRoom.class);
 
             classRooms.add(temp);
-            System.out.println(classRooms.size());
+
 
         }
     }

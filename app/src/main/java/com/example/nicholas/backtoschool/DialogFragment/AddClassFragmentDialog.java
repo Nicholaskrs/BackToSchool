@@ -55,7 +55,8 @@ public class AddClassFragmentDialog extends DialogFragment {
         fd = FirebaseDatabase.getInstance();
         dbClass = fd.getReference().child("Class");
         dbUser = fd.getReference().child("Users");
-        cfh = new ClassFirebaseHelper(dbClass);
+        cfh = new ClassFirebaseHelper(fd.getReference());
+        cfh.retrieve();
         fba = FirebaseAuth.getInstance();
 
         id = fba.getCurrentUser().getUid();
@@ -145,17 +146,19 @@ public class AddClassFragmentDialog extends DialogFragment {
                                 Toast.makeText(view.getContext(), "You are already in the class!", Toast.LENGTH_SHORT).show();
                             }
                             else {
+
+                                Toast.makeText(view.getContext(), "ClassID: " + cr.getClassRoomID(), Toast.LENGTH_SHORT).show();
+                                String kata=cfh.adduser(cr.getClassRoomID().toString(), id, user);
                                 user.addclassroom(cr);
                                 dbUser.child(id).setValue(user);
-                                cfh.adduser(classId.toString(), id, user);
-                                Toast.makeText(view.getContext(), "user: " + user.getUsername(), Toast.LENGTH_SHORT).show();
-
+                                Toast.makeText(view.getContext(), "Mess: " + kata, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(view.getContext(), "Class room added successfully!", Toast.LENGTH_SHORT).show();
                                 break;
                             }
                         }
                     }
 
-                    Toast.makeText(view.getContext(), "Class room added successfully!", Toast.LENGTH_SHORT).show();
+
                     dismiss();
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.nicholas.backtoschool;
+package com.example.nicholas.backtoschool.Fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.nicholas.backtoschool.CalendarView;
+import com.example.nicholas.backtoschool.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

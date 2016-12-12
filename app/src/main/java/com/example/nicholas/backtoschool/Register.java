@@ -54,7 +54,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         grades.add("Senior High School");
         grades.add("University");
 
-        ArrayAdapter<String> gradesadapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,grades);
+        ArrayAdapter<String> gradesadapter=new ArrayAdapter<String>(this,R.layout.spinner_item,grades);
         gradesadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         grade.setAdapter(gradesadapter);
         txtusername=(EditText) findViewById(R.id.txtUsername);

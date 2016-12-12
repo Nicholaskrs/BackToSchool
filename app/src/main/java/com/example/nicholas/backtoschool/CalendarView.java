@@ -135,6 +135,8 @@ public class CalendarView extends LinearLayout
             if (view == null)
                 view = inflater.inflate(R.layout.control_calendar_day, parent, false);
 
+
+
             // if this day has an event, specify event image
             view.setBackgroundResource(0);
             if (eventDays != null)

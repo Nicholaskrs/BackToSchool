@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/forumId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forum ID"
+        android:textSize="20dp" />
+
+    <EditText
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/forumIdtxt"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/forumTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textSize="20dp" />
+
+    <EditText
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/forumTopictxt"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/forumContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Content"
+        android:textSize="20dp" />
+
+    <EditText
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/forumContenttxt"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        style="?attr/buttonStyle"
+        android:background="@android:color/holo_blue_light" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        style="?attr/buttonStyle"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_light" />
+
+</LinearLayout>

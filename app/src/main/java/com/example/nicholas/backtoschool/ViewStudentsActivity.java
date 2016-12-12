@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.example.nicholas.backtoschool.CustomAdapter.UserAdapter;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
+import com.example.nicholas.backtoschool.Model.Forum;
 import com.example.nicholas.backtoschool.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

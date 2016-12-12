@@ -45,7 +45,9 @@
             android:label="@string/title_activity_menu"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ClassDetailActivity" />
-        <activity android:name=".ViewStudentsActivity"></activity>
+        <activity android:name=".ViewStudentsActivity" />
+        <activity android:name=".ViewForumActivity" />
+        <activity android:name=".ForumDetailActivity"></activity>
     </application>
 
 </manifest>

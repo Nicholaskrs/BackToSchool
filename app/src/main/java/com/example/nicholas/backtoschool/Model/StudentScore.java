@@ -5,7 +5,7 @@ package com.example.nicholas.backtoschool.Model;
  */
 
 public class StudentScore {
-    private String studentName,StudentNumber;
+    private String studentName,scoreFor;
     private int score;
 
     public String getStudentName() {
@@ -16,12 +16,12 @@ public class StudentScore {
         this.studentName = studentName;
     }
 
-    public String getStudentNumber() {
-        return StudentNumber;
+    public String getScoreFor() {
+        return scoreFor;
     }
 
-    public void setStudentNumber(String studentNumber) {
-        StudentNumber = studentNumber;
+    public void setScoreFor(String scoreFor) {
+        this.scoreFor = scoreFor;
     }
 
     public int getScore() {

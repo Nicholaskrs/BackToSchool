@@ -158,7 +158,7 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                style="@style/Theme.AppCompat.Light" />
+                android:buttonTint="#ffffff" />
 
             <RadioButton
                 android:id="@+id/rbFemale"
@@ -169,7 +169,7 @@
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:layout_marginRight="20dp"
-                style="@style/Theme.AppCompat.Light" />
+                android:buttonTint="#ffffff"/>
         </RadioGroup>
         <TextView
             android:layout_width="wrap_content"
@@ -190,7 +190,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
-            style="@style/Base.Theme.AppCompat.Light" />
+
+            />
 
         <Button
             android:id="@+id/btnRegister"

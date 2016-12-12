@@ -8,19 +8,22 @@ import java.util.Vector;
  */
 
 public class Score {
-    String Subject;
-    ArrayList<StudentScore> studentScores;
+
+
+    private String Type;
+    private ArrayList<StudentScore> studentScores=new ArrayList<>();
 
     public void addStudentScores(StudentScore studentscore){
         studentScores.add(studentscore);
     }
-    public String getSubject() {
-        return Subject;
+    public String getType() {
+        return Type;
     }
 
-    public void setSubject(String subject) {
-        Subject = subject;
+    public void setType(String Type) {
+        this.Type = Type;
     }
+
 
     public ArrayList<StudentScore> getStudentScores() {
         return studentScores;

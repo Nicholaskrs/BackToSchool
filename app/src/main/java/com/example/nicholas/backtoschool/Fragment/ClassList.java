@@ -59,16 +59,14 @@ public class ClassList extends Fragment {
 
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    System.out.println("user :"+snapshot.getKey());
+
                     User user = snapshot.getValue(User.class);
 
-                    System.out.println("user :"+user.getUsername());
-                    System.out.println("email:"+email.trim());
+
                     if (user.getUsername().equals(email)) {
-                        System.out.println("true");
+
                         curruser = user;
                         //Toast.makeText(getContext(),curruser.getName(), Toast.LENGTH_SHORT).show();
-                        System.out.println("curr user: "+curruser.getName());
                         final ClassListAdapter classAdapter = new ClassListAdapter(getContext(),curruser.getClassRooms());
                         listView.setAdapter(classAdapter);
                         //TODO notes: Done -CX

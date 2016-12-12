@@ -1,11 +1,13 @@
 package com.example.nicholas.backtoschool.Model;
 
+import android.text.Editable;
+
 /**
  * Created by Nicholas on 12/9/2016.
  */
 
 public class StudentScore {
-    private String studentName,scoreFor;
+    private String studentName,StudentID;
     private int score;
 
     public String getStudentName() {
@@ -16,12 +18,12 @@ public class StudentScore {
         this.studentName = studentName;
     }
 
-    public String getScoreFor() {
-        return scoreFor;
+    public String getStudentID() {
+        return StudentID;
     }
 
-    public void setScoreFor(String scoreFor) {
-        this.scoreFor = scoreFor;
+    public void setStudentID(String studentID) {
+        StudentID = studentID;
     }
 
     public int getScore() {

@@ -27,6 +27,7 @@ public class ClassDetailActivity extends Activity {
     FirebaseDatabase fd;
     DatabaseReference dbClass;
     FirebaseAuth fba;
+    ClassRoom classRoom;
     String className = "", cId = "";
 
     @Override
@@ -59,6 +60,7 @@ public class ClassDetailActivity extends Activity {
                     ClassRoom cr = snapshot.getValue(ClassRoom.class);
 
                     if(cr.getClassRoomID().equals(cId)){
+                        classRoom=cr;
                         classTitle.setText(cr.getClassName());
                         classId.setText(cId);
                     }
@@ -90,6 +92,19 @@ public class ClassDetailActivity extends Activity {
         viewScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent;
+                if(fba.getCurrentUser().getUid().equals(classRoom.getClassMasterID())){
+                intent = new Intent(ClassDetailActivity.this,EditScoreActivity.class);
+                System.out.println("qweqwe");
+                }
+                else{
+                intent = new Intent(ClassDetailActivity.this, MyScoreActivity.class);
+                    System.out.println("qweqwezxczxczxc");
+                }
+
+
+                intent.putExtra("classId",classRoom.getClassRoomID().toString());
+                startActivity(intent);
 
             }
         });

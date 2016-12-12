@@ -50,9 +50,7 @@ public class CalendarView extends LinearLayout
         initControl(context, attrs);
     }
 
-    /**
-     * Load component XML layout
-     */
+
     private void initControl(Context context,AttributeSet attrs)
     {
         LayoutInflater inflater = (LayoutInflater)
@@ -60,7 +58,6 @@ public class CalendarView extends LinearLayout
 
         inflater.inflate(R.layout.control_calendar, this);
 
-        // layout is inflated, assign local variables to components
         header = (LinearLayout)findViewById(R.id.calendar_header);
         btnPrev = (ImageView)findViewById(R.id.calendar_prev_button);
         btnNext = (ImageView)findViewById(R.id.calendar_next_button);
@@ -72,7 +69,6 @@ public class CalendarView extends LinearLayout
             @Override
             public boolean onItemLongClick(AdapterView<?> view, View cell, int position, long id)
             {
-                // handle long-press
                 if (eventHandler == null)
                     return false;
 
@@ -139,6 +135,8 @@ public class CalendarView extends LinearLayout
             if (view == null)
                 view = inflater.inflate(R.layout.control_calendar_day, parent, false);
 
+
+
             // if this day has an event, specify event image
             view.setBackgroundResource(0);
             if (eventDays != null)
@@ -184,11 +182,6 @@ public class CalendarView extends LinearLayout
         this.eventHandler = eventHandler;
     }
 
-    /**
-     * This interface defines what events to be reported to
-     * the outside world
-     */
-    //TODO ONCLICK SHOW DETAIL
     public interface EventHandler
     {
         void onDayLongPress(Date date);

@@ -83,7 +83,9 @@ public class ClassDetailActivity extends Activity {
         forum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent1 = new Intent(ClassDetailActivity.this, ViewForumActivity.class);
+                intent1.putExtra("classId", cId);
+                startActivity(intent1);
             }
         });
 

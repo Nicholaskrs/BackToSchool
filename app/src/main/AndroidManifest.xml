@@ -46,9 +46,14 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ClassDetailActivity" />
         <activity android:name=".ViewStudentsActivity" />
+
         <activity android:name=".EditScoreActivity" />
         <activity android:name=".MyScoreActivity" />
         <activity android:name=".addScoreActivity"></activity>
+
+        <activity android:name=".ViewForumActivity" />
+        <activity android:name=".ForumDetailActivity"></activity>
+
     </application>
 
 </manifest>

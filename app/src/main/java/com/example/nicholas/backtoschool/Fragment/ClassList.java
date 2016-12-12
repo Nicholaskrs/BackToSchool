@@ -70,7 +70,7 @@ public class ClassList extends Fragment {
                         final ClassListAdapter classAdapter = new ClassListAdapter(getContext(),curruser.getClassRooms());
                         listView.setAdapter(classAdapter);
                         //TODO notes: Done -CX
-                        //TODO notes: -View students (Gw lg kerja yg ini ya) -Add activity -View forum -View score -Add Score -View Score -Facebook
+                        //TODO notes: -Add activity -Notifikasi -Add Reply -Facebook -Replies
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
                         {
                             @Override

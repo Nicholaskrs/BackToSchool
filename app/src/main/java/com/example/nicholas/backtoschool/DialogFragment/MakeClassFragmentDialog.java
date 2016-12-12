@@ -114,16 +114,10 @@ ArrayList<User> users;
                 classroom.setClassRoomID(classId.getText().toString().trim());
                 classroom.setClassName(className.getText().toString().trim());
 
-
-
                 publicuser.addclassroom(classroom);
                 dbu.child(mfauth.getCurrentUser().getUid()).setValue(publicuser);
                 //classroom.addUser(publicuser);
                 classroom.adduserid(mfauth.getCurrentUser().getUid());
-
-
-
-
 
                 User classmates=new User();
                 classmates.setUsername(publicuser.getUsername());
@@ -135,7 +129,6 @@ ArrayList<User> users;
                 classroom.addUser(classmates);
                 String kata=cfh.addclassroom(classroom);
                 Toast.makeText(context, kata, Toast.LENGTH_SHORT).show();
-
 
                 dismiss();
             }

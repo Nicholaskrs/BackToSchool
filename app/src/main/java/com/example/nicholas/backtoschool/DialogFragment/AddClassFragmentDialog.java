@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
+import com.example.nicholas.backtoschool.Model.Reply;
 import com.example.nicholas.backtoschool.Model.User;
 import com.example.nicholas.backtoschool.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -82,6 +84,7 @@ public class AddClassFragmentDialog extends DialogFragment {
         dbUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                users.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
 
@@ -148,10 +151,17 @@ public class AddClassFragmentDialog extends DialogFragment {
                             else {
 
                                 Toast.makeText(view.getContext(), "ClassID: " + cr.getClassRoomID(), Toast.LENGTH_SHORT).show();
-                                String kata=cfh.adduser(cr.getClassRoomID().toString(), id, user);
+                                cfh.adduser(cr.getClassRoomID().toString(), id, user);
                                 user.addclassroom(cr);
                                 dbUser.child(id).setValue(user);
-                                Toast.makeText(view.getContext(), "Mess: " + kata, Toast.LENGTH_SHORT).show();
+/*
+                                Reply reply = new Reply();
+                                reply.setReplyID("Reply01");
+                                reply.setRepliedby("test2");
+                                reply.setReplycontent("Menurutku makanan itu enak");
+                                reply.setReplyDate(new Date(System.currentTimeMillis()));
+                                cfh.replyforum("indo", "class1", reply);
+*/
                                 Toast.makeText(view.getContext(), "Class room added successfully!", Toast.LENGTH_SHORT).show();
                                 break;
                             }

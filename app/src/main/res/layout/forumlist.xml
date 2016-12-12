@@ -5,38 +5,34 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#000">
+        android:layout_height="match_parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="email"
-            android:id="@+id/emailtxt"
+            android:text="title"
+            android:id="@+id/fTitle"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:textSize="20dp"
-            android:textColor="#fff" />
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="name"
-            android:id="@+id/nametxt"
-            android:textSize="20dp"
-            android:textColor="#fff"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/agetxt"
-            android:layout_marginEnd="59dp" />
+            android:text="Created by:"
+            android:id="@+id/replybtn"
+            android:layout_below="@+id/fTitle"
+            android:layout_alignParentStart="true"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="age"
-            android:id="@+id/agetxt"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
+            android:text="madeby"
+            android:id="@+id/madebytxt"
             android:textSize="20dp"
-            android:textColor="#fff" />
+            android:layout_below="@+id/fTitle"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </LinearLayout>

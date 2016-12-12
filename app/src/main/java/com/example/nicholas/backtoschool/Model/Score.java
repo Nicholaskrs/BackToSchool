@@ -1,5 +1,7 @@
 package com.example.nicholas.backtoschool.Model;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Vector;
 
 public class Score {
     String Subject;
-    Vector<StudentScore>studentScores;
+    ArrayList<StudentScore> studentScores;
 
     public void addStudentScores(StudentScore studentscore){
         studentScores.add(studentscore);
@@ -21,11 +23,11 @@ public class Score {
         Subject = subject;
     }
 
-    public Vector<StudentScore> getStudentScores() {
+    public ArrayList<StudentScore> getStudentScores() {
         return studentScores;
     }
 
-    public void setStudentScores(Vector<StudentScore> studentScores) {
+    public void setStudentScores(ArrayList<StudentScore> studentScores) {
         this.studentScores = studentScores;
     }
 }

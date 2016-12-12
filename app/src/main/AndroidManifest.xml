@@ -45,7 +45,10 @@
             android:label="@string/title_activity_menu"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ClassDetailActivity" />
-        <activity android:name=".ViewStudentsActivity"></activity>
+        <activity android:name=".ViewStudentsActivity" />
+        <activity android:name=".EditScoreActivity" />
+        <activity android:name=".MyScoreActivity" />
+        <activity android:name=".addScoreActivity"></activity>
     </application>
 
 </manifest>

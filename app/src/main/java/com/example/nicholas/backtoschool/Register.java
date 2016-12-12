@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.example.nicholas.backtoschool.CustomAdapter.UserAdapter;
 import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.User;
-import com.example.nicholas.backtoschool.Utilities.Encrypt;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,7 +37,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     UserFirebaseHelper ufh;
     DatabaseReference db;
     ArrayList<User> usr;
-    Encrypt en;
     FirebaseAuth mfauth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +65,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         txtschool=(EditText)findViewById(R.id.txtschool);
         radioGroup=(RadioGroup)findViewById(R.id.rbggender);
         usr=ufh.retrieve();
-        en=new Encrypt();
         mfauth=FirebaseAuth.getInstance();
 
     }

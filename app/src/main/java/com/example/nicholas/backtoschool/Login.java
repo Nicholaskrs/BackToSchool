@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.User;
-import com.example.nicholas.backtoschool.Utilities.Encrypt;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -41,7 +40,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     DatabaseReference db;
     UserFirebaseHelper ufh;
     ArrayList<User> usr;
-    Encrypt en;
     FirebaseAuth mfauth;
 
 
@@ -63,7 +61,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         db = FirebaseDatabase.getInstance().getReference();
         ufh=new UserFirebaseHelper(db);
         usr=ufh.retrieve();
-        en=new Encrypt();
         mfauth=FirebaseAuth.getInstance();
 
     }

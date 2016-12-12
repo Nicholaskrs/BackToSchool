@@ -78,7 +78,9 @@ public class ClassRoom {
         return forums;
     }
 
-
+public void addScore(Score score){
+    scores.add(score);
+}
     public List<Score> getScores() {
         return scores;
     }

@@ -18,6 +18,10 @@ import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.FirebaseHelper.UserFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.User;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 
 import com.facebook.Profile;

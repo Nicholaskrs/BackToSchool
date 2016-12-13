@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -39,6 +40,7 @@ public class AddForumFragmentDialog extends DialogFragment {
     Button add, cancel;
     String uName = "";
     String cId = "";
+    ClassRoom classRoom;
 
     @Nullable
     @Override
@@ -83,6 +85,24 @@ public class AddForumFragmentDialog extends DialogFragment {
 
             }
         });
+        dbClass.child("Class").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    ClassRoom tempclass= snapshot.getValue(ClassRoom.class);
+                    if(cId.equals(tempclass.getClassRoomID()))
+                    {
+                        classRoom=tempclass;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,17 +114,37 @@ public class AddForumFragmentDialog extends DialogFragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Forum forum = new Forum();
-                forum.setForumID(fId.getText().toString());
-                forum.setForumTopic(fName.getText().toString());
-                forum.setForumcontent(fContent.getText().toString());
-                forum.setCreateat(new Date(System.currentTimeMillis()));
-                forum.setMadeby(uName);
+                boolean find=false;
+                for(Forum frm:classRoom.getForums()){
+                    if(frm.getForumID().equals(fId.getText().toString()))
+                    {
+                        find=true;
+                        break;
+                    }
+                }
+                if(find){
+                    Toast.makeText(view.getContext(), "Forum Id must be unique please enter enother id", Toast.LENGTH_SHORT).show();
+                }
+                else if(fName.getText().toString().isEmpty()){
+                    Toast.makeText(view.getContext(), "forum name must not be empty", Toast.LENGTH_SHORT).show();
+                }
+                else if(fContent.getText().toString().isEmpty()){
+                    Toast.makeText(view.getContext(), "forum content must not be empty", Toast.LENGTH_SHORT).show();
+                }
 
-                Toast.makeText(view.getContext(), "Forum added successfully!", Toast.LENGTH_SHORT).show();
+                else {
+                    Forum forum = new Forum();
+                    forum.setForumID(fId.getText().toString());
+                    forum.setForumTopic(fName.getText().toString());
+                    forum.setForumcontent(fContent.getText().toString());
+                    forum.setCreateat(new Date(System.currentTimeMillis()));
+                    forum.setMadeby(uName);
+                    cfh.addnewforum(forum, cId);
+                    Toast.makeText(view.getContext(), "Forum added successfully!", Toast.LENGTH_SHORT).show();
 
 
-                dismiss();
+                    dismiss();
+                }
             }
         });
 

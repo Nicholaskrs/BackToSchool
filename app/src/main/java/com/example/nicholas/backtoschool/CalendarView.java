@@ -3,6 +3,7 @@ package com.example.nicholas.backtoschool;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +15,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.nicholas.backtoschool.Model.ClassReminder;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Vector;
 
 /**
  * Created by Nicholas on 12/6/2016.
@@ -33,6 +37,8 @@ public class CalendarView extends LinearLayout
     private TextView txtDate;
     private GridView grid;
     private Calendar currentDate = Calendar.getInstance();
+    private ArrayList<ClassReminder> classremind=new ArrayList<>();
+    HashSet<ClassReminder> events=new HashSet<>();
     public CalendarView(Context context)
     {
         super(context);
@@ -59,10 +65,31 @@ public class CalendarView extends LinearLayout
         inflater.inflate(R.layout.control_calendar, this);
 
         header = (LinearLayout)findViewById(R.id.calendar_header);
+        header.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.winter));
         btnPrev = (ImageView)findViewById(R.id.calendar_prev_button);
         btnNext = (ImageView)findViewById(R.id.calendar_next_button);
         txtDate = (TextView)findViewById(R.id.calendar_date_display);
         grid = (GridView)findViewById(R.id.calendar_grid);
+        btnNext.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                currentDate.add(Calendar.MONTH, 1);
+                updateCalendar(events);
+            }
+        });
+
+        // subtract one month and refresh UI
+        btnPrev.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                currentDate.add(Calendar.MONTH, -1);
+                updateCalendar(events);
+            }
+        });
         grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
         {
 
@@ -73,6 +100,7 @@ public class CalendarView extends LinearLayout
                     return false;
 
                 Date date = (Date)view.getItemAtPosition(position);
+
                 eventHandler.onDayLongPress(date);
 
                 return true;
@@ -83,9 +111,10 @@ public class CalendarView extends LinearLayout
     {
         updateCalendar(null);
     }
-    public void updateCalendar(HashSet<Date> events)
+    public void updateCalendar(HashSet<ClassReminder> events)
     {
     ArrayList<Date> cells = new ArrayList<>();
+        this.events=events;
     Calendar calendar = (Calendar)currentDate.clone();
 
     // determine the cell for current month's beginning
@@ -111,11 +140,11 @@ public class CalendarView extends LinearLayout
     }
     private class CalendarAdapter extends ArrayAdapter<Date>
     {
-        private HashSet<Date> eventDays;
+        private HashSet<ClassReminder> eventDays;
 
         // for view inflation
         private LayoutInflater inflater;
-        public CalendarAdapter(Context context, ArrayList<Date> days, HashSet<Date> eventDays) {
+        public CalendarAdapter(Context context, ArrayList<Date> days, HashSet<ClassReminder> eventDays) {
             super(context, R.layout.control_calendar_day, days);
             this.eventDays = eventDays;
             inflater = LayoutInflater.from(context);
@@ -141,16 +170,20 @@ public class CalendarView extends LinearLayout
             view.setBackgroundResource(0);
             if (eventDays != null)
             {
-                for (Date eventDate : eventDays)
+                classremind.clear();
+                for (ClassReminder eventDate : eventDays)
                 {
-                    if (eventDate.getDate() == day &&
-                            eventDate.getMonth() == month &&
-                            eventDate.getYear() == year)
-                    {
-                        // mark this day for event
-                        //view.setBackgroundResource(R.drawable.reminder);
-                        break;
-                    }
+                    classremind.add(eventDate);
+                    System.out.println(eventDate.getDeadline().toString());
+                    Date date1= eventDate.getDeadline();
+                        if (date1.getDate() == date.getDate() &&
+                                date1.getMonth() == date.getMonth() &&
+                                date1.getYear() == date.getYear())
+                        {
+                            // mark this day for event
+                            view.setBackgroundResource(R.drawable.reminder);
+                            break;
+                        }
                 }
             }
 

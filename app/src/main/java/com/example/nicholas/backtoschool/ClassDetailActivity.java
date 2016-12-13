@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nicholas.backtoschool.DialogFragment.AddActivityFragmentDialog;
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
 import com.example.nicholas.backtoschool.Model.ClassRoom;
 import com.example.nicholas.backtoschool.Model.User;
@@ -76,6 +77,14 @@ public class ClassDetailActivity extends Activity {
        activity.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+
+               android.app.FragmentManager fm = getFragmentManager();
+               AddActivityFragmentDialog aaf=new AddActivityFragmentDialog();
+               aaf.show(fm,"Add Activity");
+               Bundle b=new Bundle();
+               b.putString("ClassID",cId);
+
+               aaf.setArguments(b);
 
            }
        });

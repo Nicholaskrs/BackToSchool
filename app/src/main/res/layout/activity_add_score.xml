@@ -38,6 +38,7 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/scoretype"
+                android:textColor="#ffffff"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp" />
         </LinearLayout>

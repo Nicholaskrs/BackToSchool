@@ -55,7 +55,6 @@ public class AddForumFragmentDialog extends DialogFragment {
         dbUser = fd.getReference().child("Users");
         cfh = new ClassFirebaseHelper(dbClass);
         cfh.retrieve();
-        fId = (EditText) forumView.findViewById(R.id.forumIdtxt);
         fName = (EditText) forumView.findViewById(R.id.forumTopictxt);
         fContent = (EditText) forumView.findViewById(R.id.forumContenttxt);
         add = (Button) forumView.findViewById(R.id.add);
@@ -114,18 +113,7 @@ public class AddForumFragmentDialog extends DialogFragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean find=false;
-                for(Forum frm:classRoom.getForums()){
-                    if(frm.getForumID().equals(fId.getText().toString()))
-                    {
-                        find=true;
-                        break;
-                    }
-                }
-                if(find){
-                    Toast.makeText(view.getContext(), "Forum Id must be unique please enter enother id", Toast.LENGTH_SHORT).show();
-                }
-                else if(fName.getText().toString().isEmpty()){
+                if(fName.getText().toString().isEmpty()){
                     Toast.makeText(view.getContext(), "forum name must not be empty", Toast.LENGTH_SHORT).show();
                 }
                 else if(fContent.getText().toString().isEmpty()){
@@ -134,7 +122,6 @@ public class AddForumFragmentDialog extends DialogFragment {
 
                 else {
                     Forum forum = new Forum();
-                    forum.setForumID(fId.getText().toString());
                     forum.setForumTopic(fName.getText().toString());
                     forum.setForumcontent(fContent.getText().toString());
                     forum.setCreateat(new Date(System.currentTimeMillis()));

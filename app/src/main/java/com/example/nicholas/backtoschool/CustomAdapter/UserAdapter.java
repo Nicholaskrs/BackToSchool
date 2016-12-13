@@ -60,9 +60,9 @@ public class UserAdapter extends BaseAdapter{
         TextView age = (TextView) view.findViewById(R.id.agetxt);
 
         User user = (User) this.getItem(i);
-        email.setText(user.getUsername());
+        email.setText((i+1)+"");
         name.setText(user.getName());
-        age.setText( user.getAge()+"");
+        age.setText("");
 
         return view;
     }

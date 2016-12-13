@@ -83,6 +83,7 @@ public class ClassFirebaseHelper {
         {
             ClassRoom tempclass=classRooms.get(classindex);
             try {
+                forum.setForumID("F"+tempclass.getForums().size());
                 tempclass.addforum(forum);
                 db.child("Class").child(ClassID).setValue(tempclass);
                 return "Forum added Successfully";
@@ -124,6 +125,7 @@ public class ClassFirebaseHelper {
             if(forumindex==-1)
                 return "Error Forum not found";
             Forum tempforum=tempforums.get(forumindex);
+            reply.setReplyID("R"+tempforum.getReplies().size());
             tempforum.addReplies(reply);
             tempforums.set(forumindex,tempforum);
             try {

@@ -51,7 +51,6 @@ public class AddReplyFragmentDialog extends DialogFragment {
         cfh = new ClassFirebaseHelper(dbClass);
         cfh.retrieve();
 
-        replyId = (EditText) replyView.findViewById(R.id.replyidtxt);
         replyContent = (EditText) replyView.findViewById(R.id.contenttxt);
         add = (Button) replyView.findViewById(R.id.add);
         cancel = (Button) replyView.findViewById(R.id.cancel);
@@ -93,7 +92,6 @@ public class AddReplyFragmentDialog extends DialogFragment {
             public void onClick(View view) {
 
                 Reply reply = new Reply();
-                reply.setReplyID(replyId.getText().toString());
                 reply.setRepliedby(rName);
                 reply.setReplycontent(replyContent.getText().toString());
                 reply.setReplyDate(new Date(System.currentTimeMillis()));

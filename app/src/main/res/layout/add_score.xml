@@ -13,13 +13,19 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/username"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="#56bfe2" />
 
         <EditText
             android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/score" />
+            android:id="@+id/score"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp" />
     </LinearLayout>
 </ScrollView>

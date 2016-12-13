@@ -10,27 +10,35 @@
         android:text="Class Room ID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5" />
+        android:id="@+id/textView5"
+        android:textSize="20dp"
+        android:textColor="#34aad1"
+        android:textAlignment="center" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/ClassRoomID" />
+        android:id="@+id/ClassRoomID"
+        android:textAlignment="center" />
 
     <TextView
         android:text="Class Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4" />
+        android:id="@+id/textView4"
+        android:textSize="20dp"
+        android:textColor="#34aad1"
+        android:textAlignment="center" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/ClassName" />
+        android:id="@+id/ClassName"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/make_class"

@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#000">
 
         <EditText
             android:layout_width="wrap_content"
@@ -19,7 +20,8 @@
             android:layout_marginEnd="30dp"
             android:layout_alignBottom="@+id/mailIcon"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/mailIcon" />
+            android:layout_alignTop="@+id/mailIcon"
+            android:textColor="#7ee1f2" />
 
         <ImageView
             android:layout_width="50dp"
@@ -56,7 +58,8 @@
             android:layout_marginEnd="30dp"
             android:layout_alignBottom="@+id/ageIcon"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/ageIcon" />
+            android:layout_alignTop="@+id/ageIcon"
+            android:textColor="#7ee1f2" />
 
         <ImageView
             android:layout_width="50dp"
@@ -81,7 +84,8 @@
             android:layout_marginEnd="30dp"
             android:layout_alignBottom="@+id/genderIcon"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/genderIcon" />
+            android:layout_alignTop="@+id/genderIcon"
+            android:textColor="#7ee1f2" />
 
         <ImageView
             android:layout_width="50dp"
@@ -106,7 +110,8 @@
             android:layout_marginEnd="30dp"
             android:layout_alignBottom="@+id/eduIcon"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/eduIcon" />
+            android:layout_alignTop="@+id/eduIcon"
+            android:textColor="#7ee1f2" />
 
         <ImageView
             android:layout_width="50dp"
@@ -131,7 +136,8 @@
             android:layout_marginEnd="30dp"
             android:layout_alignBottom="@+id/univIcon"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/univIcon" />
+            android:layout_alignTop="@+id/univIcon"
+            android:textColor="#7ee1f2" />
 
         <EditText
             android:layout_width="wrap_content"

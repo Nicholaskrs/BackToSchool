@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forum ID"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#34aad1" />
 
     <EditText
         android:layout_width="324dp"
@@ -25,7 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#34aad1" />
 
     <EditText
         android:layout_width="324dp"
@@ -39,7 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Content"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#34aad1" />
 
     <EditText
         android:layout_width="324dp"

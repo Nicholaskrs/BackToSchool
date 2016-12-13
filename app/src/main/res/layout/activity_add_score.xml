@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.nicholas.backtoschool.addScoreActivity"
-    >
+    android:background="#000">
 
     <LinearLayout
         android:orientation="vertical"
@@ -26,7 +26,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView2"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:textColor="#69b8ec"
+                android:layout_marginTop="10dp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -34,18 +38,30 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/scoretype"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:layout_marginTop="10dp" />
         </LinearLayout>
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="425dp"
-            android:id="@+id/user_score"/>
+            android:layout_height="381dp"
+            android:id="@+id/user_score"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
 
         <Button
-            android:text="Button"
+            android:text="Submit Score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textStyle="bold"
+            android:background="#3480e4"
+            android:height="50dp"
+            style="@style/Base.TextAppearance.AppCompat.Button"
             android:id="@+id/submit_score" />
     </LinearLayout>
 

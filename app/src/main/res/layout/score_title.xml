@@ -7,5 +7,7 @@
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scoretitle" />
+        android:id="@+id/scoretitle"
+        android:textColor="#34aad1"
+        android:textSize="20dp" />
 </LinearLayout>

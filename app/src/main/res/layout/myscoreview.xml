@@ -8,19 +8,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/MyName"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textSize="18dp"
+        android:textColor="#34aad1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Type"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textSize="18dp"
+        android:textColor="#34aad1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/MyScore"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textSize="18dp"
+        android:textColor="#34aad1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp" />
 </LinearLayout>

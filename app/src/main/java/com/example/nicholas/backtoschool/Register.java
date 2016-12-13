@@ -101,7 +101,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 //TODO hapus student id gak kepake
             if(mfauth.getCurrentUser()!=null)
                 mfauth.signOut();
-            mfauth.createUserWithEmailAndPassword(txtusername.getText().toString(), txtpassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mfauth.createUserWithEmailAndPassword(txtusername.getText().toString(), txtpassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(Task<AuthResult> task) {
                     mfauth.signInWithEmailAndPassword(txtusername.getText().toString(),txtpassword.getText().toString());

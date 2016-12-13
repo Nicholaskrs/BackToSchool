@@ -94,7 +94,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 //handleFacebookAccessToken(loginResult.getAccessToken());
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
-                Toast.makeText(getApplicationContext(), "Facebook login succeed: " + loginResult, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Facebook login succeed: " + loginResult.getAccessToken(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -144,10 +144,31 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         mfauth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(Task<AuthResult> task) {
-                Log.d(TAG, "signInWithCredential:onComplete:"+task.isSuccessful());
+
                 if(!task.isSuccessful()){
+
                     Log.w(TAG, "signInWithCredential", task.getException());
-                    Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    System.out.println(mfauth.getCurrentUser().getEmail());
+
+                    Toast.makeText(getApplicationContext(), "Email: "+mfauth.getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
+                    User user = new User();
+                    user.setUsername(mfauth.getCurrentUser().getEmail());
+                    user.setAge(0);
+                    user.setName("");
+                    user.setGender("");
+                    user.setSchool("");
+                    user.setEducationalLevel("");
+                    ufh.savedata(user, mfauth.getCurrentUser().getUid());
+
+                    Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Login.this, MenuActivity.class);
+                    startActivity(intent);
+                    finish();
+
                 }
             }
         });
@@ -174,12 +195,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             Toast.makeText(Login.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Login.this, MenuActivity.class);
                             startActivity(intent);
-
                         }
-                btnLogin.setEnabled(true);
+                        btnLogin.setEnabled(true);
                     }
                 });
 

@@ -95,11 +95,11 @@ public class ClassDetailActivity extends Activity {
                 Intent intent;
                 if(fba.getCurrentUser().getUid().equals(classRoom.getClassMasterID())){
                 intent = new Intent(ClassDetailActivity.this,EditScoreActivity.class);
-                System.out.println("qweqwe");
+
                 }
                 else{
                 intent = new Intent(ClassDetailActivity.this, MyScoreActivity.class);
-                    System.out.println("qweqwezxczxczxc");
+
                 }
 
 

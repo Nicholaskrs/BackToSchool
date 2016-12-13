@@ -24,7 +24,6 @@ public class Score {
         this.Type = Type;
     }
 
-
     public ArrayList<StudentScore> getStudentScores() {
         return studentScores;
     }

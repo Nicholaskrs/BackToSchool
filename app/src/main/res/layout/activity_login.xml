@@ -91,6 +91,7 @@
         android:layout_gravity="center_horizontal"
         android:enabled="false"
         android:paddingLeft="10dp"
-        android:layout_weight="0.12"
-        android:height="50dp"/>
+        android:layout_weight="0.19"
+        android:height="50dp"
+        style="@style/com_facebook_button" />
 </LinearLayout>

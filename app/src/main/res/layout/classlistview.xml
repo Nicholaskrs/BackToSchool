@@ -4,17 +4,26 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text=""
         android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:id="@+id/classID"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:text="class id"
+        android:textColor="#6f9af0"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
 
     <TextView
-        android:text=""
+        android:text="name"
         android:layout_width="189dp"
         android:layout_height="wrap_content"
         android:id="@+id/className"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textColor="#6f9af0"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
 
 </LinearLayout>

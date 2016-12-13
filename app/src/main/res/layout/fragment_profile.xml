@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Password"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#34aad1" />
 
     <EditText
         android:layout_width="match_parent"
@@ -27,7 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Confirm Password"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#34aad1" />
 
     <EditText
         android:layout_width="match_parent"
@@ -42,7 +44,8 @@
         android:layout_height="wrap_content"
         android:text="Save Profile"
         style="?attr/buttonStyle"
-        android:background="@android:color/holo_blue_light" />
+        android:background="@android:color/holo_blue_light"
+        android:textColor="#fff" />
 
     <Button
         android:id="@+id/dismiss"
@@ -51,5 +54,6 @@
         android:text="Cancel"
         style="?attr/buttonStyle"
         android:layout_marginTop="20dp"
-        android:background="@android:color/holo_blue_light" />
+        android:background="@android:color/holo_blue_light"
+        android:textColor="#fff" />
 </LinearLayout>

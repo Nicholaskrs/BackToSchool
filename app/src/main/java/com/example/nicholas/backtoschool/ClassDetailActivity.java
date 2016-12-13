@@ -103,16 +103,13 @@ public class ClassDetailActivity extends Activity {
             public void onClick(View view) {
                 Intent intent;
                 if(fba.getCurrentUser().getUid().equals(classRoom.getClassMasterID())){
-                intent = new Intent(ClassDetailActivity.this,EditScoreActivity.class);
-
+                    intent = new Intent(ClassDetailActivity.this,EditScoreActivity.class);
                 }
                 else{
-                intent = new Intent(ClassDetailActivity.this, MyScoreActivity.class);
-
+                    intent = new Intent(ClassDetailActivity.this, MyScoreActivity.class);
                 }
 
-
-                intent.putExtra("classId",classRoom.getClassRoomID().toString());
+                intent.putExtra("classId", classRoom.getClassRoomID().toString());
                 startActivity(intent);
 
             }

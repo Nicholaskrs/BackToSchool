@@ -62,7 +62,7 @@ public class AddForumFragmentDialog extends DialogFragment {
         Bundle b = getActivity().getIntent().getExtras();
         cId = b.getString("classId");
 
-        Toast.makeText(forumView.getContext(), "CId = " + cId, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(forumView.getContext(), "CId = " + cId, Toast.LENGTH_SHORT).show();
 
         dbUser.addValueEventListener(new ValueEventListener() {
             @Override

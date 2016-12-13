@@ -38,7 +38,6 @@
             android:authorities="com.facebook.app.FacebookContentProvider"
             android:exported="true" />
 
-        <activity android:name=".Testing_profil" />
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".MenuActivity"

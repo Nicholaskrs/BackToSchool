@@ -1,10 +1,12 @@
 package com.example.nicholas.backtoschool;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.view.Window;
 import android.widget.TextView;
 

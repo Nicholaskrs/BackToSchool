@@ -89,7 +89,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:enabled="false"
+        android:enabled="true"
         android:paddingLeft="10dp"
         android:layout_weight="0.19"
         android:height="50dp"

@@ -51,17 +51,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         //AppEventsLogger.activateApp(this);
 
-        usr=new ArrayList<>();
-        txtusername=(EditText)findViewById(R.id.txtloginUsername);
-        txtpassword=(EditText)findViewById(R.id.txtloginPassword);
-        btnLogin=(Button)findViewById(R.id.btnLogin);
-        gen=(Button)findViewById(R.id.login_register);
+        usr = new ArrayList<>();
+        txtusername =(EditText)findViewById(R.id.txtloginUsername);
+        txtpassword =(EditText)findViewById(R.id.txtloginPassword);
+        btnLogin =(Button)findViewById(R.id.btnLogin);
+        gen =(Button)findViewById(R.id.login_register);
         btnLogin.setOnClickListener(this);
         gen.setOnClickListener(this);
         db = FirebaseDatabase.getInstance().getReference();
-        ufh=new UserFirebaseHelper(db);
-        usr=ufh.retrieve();
-        mfauth=FirebaseAuth.getInstance();
+        ufh = new UserFirebaseHelper(db);
+        usr = ufh.retrieve();
+        mfauth = FirebaseAuth.getInstance();
 
     }
 
@@ -101,8 +101,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         else if(view.getId()==gen.getId()){
             Intent intent = new Intent(Login.this,Register.class);
             startActivity(intent);
-
-
         }
     }
 

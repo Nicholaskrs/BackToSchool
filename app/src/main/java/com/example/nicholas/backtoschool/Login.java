@@ -155,9 +155,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 }
                 else
                 {
-                    System.out.println(mfauth.getCurrentUser().getEmail());
-
-                    Toast.makeText(getApplicationContext(), "Email: "+mfauth.getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
                     User user = new User();
                     user.setUsername(mfauth.getCurrentUser().getEmail());
                     user.setAge(0);

@@ -10,13 +10,16 @@ import android.support.v7.app.NotificationCompat;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseAuth fba;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        fba=FirebaseAuth.getInstance();
         TextView title = (TextView)findViewById(R.id.title);
         TextView power = (TextView) findViewById(R.id.powered);
         TextView nk = (TextView) findViewById(R.id.nk);
@@ -30,9 +33,14 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                final Intent intent = new Intent(MainActivity.this, Login.class);
-                startActivity(intent);
-                finish();
+                if(fba.getCurrentUser()!=null){
+                    Intent intent=new Intent(MainActivity.this,MenuActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    final Intent intent = new Intent(MainActivity.this, Login.class);
+                    startActivity(intent);
+                }finish();
             }
         }, 3000);
 

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.DialogFragment.AddActivityFragmentDialog;
 import com.example.nicholas.backtoschool.FirebaseHelper.ClassFirebaseHelper;
@@ -40,7 +39,6 @@ public class ClassDetailActivity extends Activity {
 
         cId = intent.getStringExtra("classId");
 
-        Toast.makeText(getApplicationContext(), "Class Id = "+cId, Toast.LENGTH_SHORT).show();
 
         fd = FirebaseDatabase.getInstance();
         dbClass = fd.getReference().child("Class");

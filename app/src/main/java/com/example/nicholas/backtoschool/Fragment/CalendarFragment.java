@@ -102,7 +102,7 @@ public class CalendarFragment extends Fragment {
         cv = (CalendarView)view.findViewById(R.id.calendar_view);
 
         mNotifyMgr =(NotificationManager) view.getContext().getSystemService(view.getContext().NOTIFICATION_SERVICE);
-        mBuilder =new NotificationCompat.Builder(view.getContext()).setSmallIcon(R.drawable.profile).setContentTitle("My notification");
+        mBuilder =new NotificationCompat.Builder(view.getContext()).setSmallIcon(R.drawable.download).setContentTitle("My notification");
 
 // Builds the notification and issues it.
 

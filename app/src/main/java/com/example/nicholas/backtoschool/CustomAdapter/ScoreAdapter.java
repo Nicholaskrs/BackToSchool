@@ -47,7 +47,6 @@ public class ScoreAdapter extends BaseAdapter{
         if(view == null){
             view = LayoutInflater.from(c).inflate(R.layout.myscoreview, viewGroup, false);
         }
-        System.out.println("kepanggil?");
         TextView name=(TextView)view.findViewById(R.id.MyName);
         TextView score=(TextView)view.findViewById(R.id.MyScore);
         TextView type=(TextView)view.findViewById(R.id.Type);

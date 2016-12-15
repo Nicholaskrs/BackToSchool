@@ -28,7 +28,6 @@ public class EditScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_score);
-        System.out.println("Activity Edit Score");
         Intent intent = getIntent();
 
         cId = intent.getStringExtra("classId");

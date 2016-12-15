@@ -54,14 +54,12 @@ public class AddActivityFragmentDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_add_activity, container, false);
         getDialog().setTitle("Add Activity");
         cId=getArguments().getString("ClassID");
-        System.out.println("Bundle Class ID: "+cId);
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 key.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ClassRoom classroom= snapshot.getValue(ClassRoom.class);
-                    System.out.println(classroom.getClassRoomID());
                         if(classroom.getClassRoomID().equals(cId)){
 
                             for(String uid:classroom.getUserID()){

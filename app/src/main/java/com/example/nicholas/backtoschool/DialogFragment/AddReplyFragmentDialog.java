@@ -68,7 +68,6 @@ public class AddReplyFragmentDialog extends DialogFragment {
                     if (user.getUsername().equals(fba.getCurrentUser().getEmail())) {
                         rName = user.getName();
 
-                        Toast.makeText(replyView.getContext(), "Reply by: "+rName, Toast.LENGTH_SHORT).show();
                     }
                 }
             }

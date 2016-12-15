@@ -69,8 +69,7 @@ public class addScoreActivity extends AppCompatActivity {
 
                     if(cr.getClassRoomID().equals(cId)){
                         classRoom=cr;
-                        System.out.println("satu1");
-                    }
+                       }
                 }
 
                 db.addValueEventListener(new ValueEventListener() {

@@ -31,7 +31,7 @@ public class MyScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_my_score);
-        System.out.println("Activity My Score");
+
         Intent intent = getIntent();
 
         String cId = intent.getStringExtra("classId");

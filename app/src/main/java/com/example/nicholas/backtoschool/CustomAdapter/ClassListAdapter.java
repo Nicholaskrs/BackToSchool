@@ -53,7 +53,7 @@ public class ClassListAdapter extends BaseAdapter {
 
         id.setText(cr.getClassRoomID());
         name.setText(cr.getClassName());
-        System.out.println("here");
+
 
         return view;
     }

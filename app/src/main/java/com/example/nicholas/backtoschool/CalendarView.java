@@ -174,8 +174,7 @@ public class CalendarView extends LinearLayout
                 for (ClassReminder eventDate : eventDays)
                 {
                     classremind.add(eventDate);
-                    System.out.println(eventDate.getDeadline().toString());
-                    Date date1= eventDate.getDeadline();
+                     Date date1= eventDate.getDeadline();
                         if (date1.getDate() == date.getDate() &&
                                 date1.getMonth() == date.getMonth() &&
                                 date1.getYear() == date.getYear())

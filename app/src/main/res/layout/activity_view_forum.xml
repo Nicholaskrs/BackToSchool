@@ -23,7 +23,7 @@
         android:layout_marginBottom="20dp"
         android:textStyle="bold"
         android:height="50dp"
-        android:background="#3480e4"
+        android:background="#34cdcd"
         style="@style/Base.TextAppearance.AppCompat.Button" />
 
     <ListView

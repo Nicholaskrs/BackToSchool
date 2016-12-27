@@ -14,34 +14,33 @@
             android:id="@+id/fTitle"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:textStyle="bold"
             android:textColor="#6db6ea"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Created by:"
             android:id="@+id/replybtn"
-            android:layout_below="@+id/fTitle"
-            android:layout_alignParentStart="true"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textColor="#6db6ea"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_below="@+id/fTitle"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="madeby"
             android:id="@+id/madebytxt"
-            android:textSize="20dp"
-            android:layout_below="@+id/fTitle"
-            android:layout_centerHorizontal="true"
+            android:textSize="15dp"
             android:textColor="#6db6ea"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_alignTop="@+id/replybtn"
+            android:layout_toEndOf="@+id/replybtn"
+            android:layout_marginStart="71dp" />
     </RelativeLayout>
 </LinearLayout>

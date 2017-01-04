@@ -24,6 +24,8 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.appevents.AppEventsLogger;
@@ -41,7 +43,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
@@ -56,6 +63,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     CallbackManager cbm;
     FirebaseAuth.AuthStateListener fbalistener;
     String TAG = "";
+    String email = "", birth = "", name = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +97,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         };
 
         loginBtn = (LoginButton) findViewById(R.id.login_button);
-        loginBtn.setReadPermissions("email");
+        loginBtn.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday"));
 
         LoginManager.getInstance().registerCallback(cbm, new FacebookCallback<LoginResult>() {
             @Override
@@ -98,6 +106,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
                 Toast.makeText(getApplicationContext(), "Facebook login succeed: " + loginResult.getAccessToken(), Toast.LENGTH_SHORT).show();
+
+                GraphRequest req = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback(){
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        Log.v("Login", response.toString());
+
+                        try {
+                            email = object.getString("email");
+                            birth = object.getString("birthday");
+                            name = object.getString("name");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
             }
 
             @Override
@@ -155,10 +179,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 }
                 else
                 {
+                    int year = Integer.parseInt(birth.substring(6));
+
+                    Calendar cal = Calendar.getInstance();
+                    int currYear = cal.get(Calendar.YEAR);
+
+                    int age = currYear - year;
+
                     User user = new User();
-                    user.setUsername(mfauth.getCurrentUser().getEmail());
-                    user.setAge(0);
-                    user.setName("");
+                    user.setUsername(email);
+                    user.setAge(age);
+                    user.setName(name);
                     user.setGender("");
                     user.setSchool("");
                     user.setEducationalLevel("");

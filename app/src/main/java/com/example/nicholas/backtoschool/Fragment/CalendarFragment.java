@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.support.v7.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nicholas.backtoschool.CalendarView;
+import com.example.nicholas.backtoschool.CustomAdapter.EventAdapter;
 import com.example.nicholas.backtoschool.Model.ClassReminder;
 import com.example.nicholas.backtoschool.Model.User;
 import com.example.nicholas.backtoschool.R;
@@ -35,6 +37,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Vector;
 
 
 public class CalendarFragment extends Fragment {
@@ -43,7 +47,9 @@ public class CalendarFragment extends Fragment {
     private ImageView btnPrev;
     private ImageView btnNext;
     DatabaseReference db;
+    Context c;
     FirebaseAuth fba;
+    ListView listView;
     private CalendarView.EventHandler eventHandler;
     private TextView txtDate;
     private GridView grid;
@@ -62,7 +68,7 @@ public class CalendarFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         db=FirebaseDatabase.getInstance().getReference().child("Users");
         fba=FirebaseAuth.getInstance();
@@ -98,9 +104,9 @@ public class CalendarFragment extends Fragment {
             }
         });
 
-
+        c=view.getContext();
         cv = (CalendarView)view.findViewById(R.id.calendar_view);
-
+        listView=(ListView)view.findViewById(R.id.eventView);
         mNotifyMgr =(NotificationManager) view.getContext().getSystemService(view.getContext().NOTIFICATION_SERVICE);
         mBuilder =new NotificationCompat.Builder(view.getContext()).setSmallIcon(R.drawable.download).setContentTitle("My notification");
 
@@ -112,20 +118,27 @@ public class CalendarFragment extends Fragment {
         cv.setEventHandler(new CalendarView.EventHandler() {
             @Override
             public void onDayLongPress(Date date) {
+                Vector<String> events=new Vector<String>();
                 boolean find=false;
                 // show returned day
-                for(ClassReminder reminder:classReminders){
-                    if(reminder.getDeadline().getDate()==date.getDate() &&
-                            reminder.getDeadline().getMonth()==date.getMonth() &&
-                            reminder.getDeadline().getYear()==date.getYear() )
-                    {
-                        Toast.makeText(getContext(), reminder.getActivity(), Toast.LENGTH_SHORT).show();
-                        find=true;
+                for(ClassReminder reminder:classReminders) {
+                    if (reminder.getDeadline().getDate() == date.getDate() &&
+                            reminder.getDeadline().getMonth() == date.getMonth() &&
+                            reminder.getDeadline().getYear() == date.getYear()) {
+
+
+                        find = true;
+                        events.add(reminder.getActivity());
+
                     }
                 }
                 if(!find) {
                     DateFormat df = SimpleDateFormat.getDateInstance();
-                    Toast.makeText(getContext(), df.format(date), Toast.LENGTH_SHORT).show();
+
+                }
+                else{
+
+                    listView.setAdapter(new EventAdapter(getContext(),events));
                 }
             }
         });

@@ -104,9 +104,9 @@ public class AddActivityFragmentDialog extends DialogFragment {
                 if(activitytext.getText().toString().equals("")){
                     Toast.makeText(view.getContext(), "Activity Must be filled", Toast.LENGTH_SHORT).show();
                 }
-                else if(now.after(d)){
-                    Toast.makeText(view.getContext(), "You Can't make activity that date have already passed", Toast.LENGTH_SHORT).show();
-                }
+               // else if(now.after(d)){
+                //    Toast.makeText(view.getContext(), "You Can't make activity that date have already passed", Toast.LENGTH_SHORT).show();
+                //}
                 else {
                     dbu.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

@@ -90,20 +90,25 @@ public class CalendarView extends LinearLayout
                 updateCalendar(events);
             }
         });
-        grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        /*new AdapterView.OnClickListener()
         {
 
             @Override
             public boolean onItemLongClick(AdapterView<?> view, View cell, int position, long id)
             {
-                if (eventHandler == null)
-                    return false;
+
+            }
+        }*/
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> view, View cell, int position, long id) {
+
 
                 Date date = (Date)view.getItemAtPosition(position);
 
                 eventHandler.onDayLongPress(date);
 
-                return true;
+
             }
         });
     }

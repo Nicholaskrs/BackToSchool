@@ -106,18 +106,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
                 Toast.makeText(getApplicationContext(), "Facebook login succeed: " + loginResult.getAccessToken(), Toast.LENGTH_SHORT).show();
-
+                //TODO login with credential
+                // mfauth.signInWithCredential(loginResult);
+                System.out.println("or Here?");
                 GraphRequest req = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback(){
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         Log.v("Login", response.toString());
-
+                        System.out.println("Here?");
                         try {
                             email = object.getString("email");
                             birth = object.getString("birthday");
                             name = object.getString("name");
+                            System.out.println("Success "+name+","+birth+","+email);
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            System.out.println("Fail");
                         }
 
                     }
@@ -179,16 +183,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 }
                 else
                 {
-                    int year = Integer.parseInt(birth.substring(6));
+                    System.out.println(birth+ "asdasd");
+                    //int year = Integer.parseInt(birth.substring(6));
 
                     Calendar cal = Calendar.getInstance();
                     int currYear = cal.get(Calendar.YEAR);
 
-                    int age = currYear - year;
+                    //int age = currYear - year;
 
                     User user = new User();
                     user.setUsername(email);
-                    user.setAge(age);
+                    //user.setAge(age);
                     user.setName(name);
                     user.setGender("");
                     user.setSchool("");

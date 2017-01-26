@@ -23,6 +23,7 @@ import com.example.nicholas.backtoschool.DialogFragment.MakeClassFragmentDialog;
 import com.example.nicholas.backtoschool.Fragment.CalendarFragment;
 import com.example.nicholas.backtoschool.Fragment.ClassList;
 import com.example.nicholas.backtoschool.Model.User;
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -168,6 +169,7 @@ public class MenuActivity extends AppCompatActivity
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             FirebaseAuth.getInstance().signOut();
+            LoginManager.getInstance().logOut();
             startActivity(intent);
         }
 

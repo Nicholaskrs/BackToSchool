@@ -7,32 +7,9 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="562dp"
         android:id="@+id/listView"
         android:layout_gravity="center"
         android:layout_marginTop="40dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Class ID"
-        android:id="@+id/textView8"
-        android:layout_gravity="left|top"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"
-        android:textColor="#4f8ee1" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Class Name"
-        android:id="@+id/textView9"
-        android:layout_gravity="right|top"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"
-        android:textColor="#4f8ee1"
-        android:layout_marginRight="20dp" />
 
 </FrameLayout>

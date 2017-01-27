@@ -125,6 +125,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     }
 
                 });
+                Bundle params = new Bundle();
+                params.putString("fields", "id,name,email,gender,birthday");
+                req.setParameters(params);
                 req.executeAsync();
             }
 
@@ -184,17 +187,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 }
                 else
                 {
-                    System.out.println(birth+ "asdasd");
-                    //int year = Integer.parseInt(birth.substring(6));
+                    System.out.println(email+ " asdasd");
+                    int year = Integer.parseInt(birth.substring(6));
 
                     Calendar cal = Calendar.getInstance();
                     int currYear = cal.get(Calendar.YEAR);
 
-                    //int age = currYear - year;
+                    int age = currYear - year;
 
                     User user = new User();
                     user.setUsername(email);
-                    //user.setAge(age);
+                    user.setAge(age);
                     user.setName(name);
                     user.setGender("");
                     user.setSchool("");

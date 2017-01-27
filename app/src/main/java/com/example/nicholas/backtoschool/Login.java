@@ -248,6 +248,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         else if(view.getId()==gen.getId()){
             Intent intent = new Intent(Login.this,Register.class);
             startActivity(intent);
+            finish();
         }
     }
 

@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     CallbackManager cbm;
     FirebaseAuth.AuthStateListener fbalistener;
     String TAG = "";
-    String email = "", birth = "", name = "";
+    String email = "", birth = "", name = "",gender="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,10 +116,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             email = object.getString("email");
                             birth = object.getString("birthday");
                             name = object.getString("name");
-                            System.out.println("Success "+name+","+birth+","+email);
+                            gender= object.getString("gender");
+
                         } catch (Exception e) {
                             e.printStackTrace();
-                            System.out.println("Fail");
                         }
 
                     }
@@ -199,7 +199,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     user.setUsername(email);
                     user.setAge(age);
                     user.setName(name);
-                    user.setGender("");
+                    user.setGender(gender);
                     user.setSchool("");
                     user.setEducationalLevel("");
                     ufh.savedata(user, mfauth.getCurrentUser().getUid());

@@ -106,26 +106,26 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
                 Toast.makeText(getApplicationContext(), "Facebook login succeed: " + loginResult.getAccessToken(), Toast.LENGTH_SHORT).show();
-                //TODO login with credential
-                // mfauth.signInWithCredential(loginResult);
+
                 System.out.println("or Here?");
                 GraphRequest req = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback(){
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         Log.v("Login", response.toString());
-                        System.out.println("Here?");
                         try {
                             email = object.getString("email");
                             birth = object.getString("birthday");
                             name = object.getString("name");
                             System.out.println("Success "+name+","+birth+","+email);
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                             System.out.println("Fail");
                         }
 
                     }
+
                 });
+                req.executeAsync();
             }
 
             @Override
@@ -144,6 +144,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         db = FirebaseDatabase.getInstance().getReference();
         ufh = new UserFirebaseHelper(db);
         usr = ufh.retrieve();
+
 
 
     }
